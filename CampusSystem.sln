@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26228.9
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CampusSystem.Wpf", "Wpf\CampusSystem.Wpf.csproj", "{7F492A62-8E5D-4852-A921-563162922EB0}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CampusSystem.Wpf", "CampusSystem.Wpf\CampusSystem.Wpf.csproj", "{7F492A62-8E5D-4852-A921-563162922EB0}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CampusSystem.Client", "CampusSystem.Client\CampusSystem.Client.csproj", "{01AD95A1-2636-487C-98CE-5BD801245B25}"
 EndProject
