@@ -11,8 +11,9 @@
             this.Students = new HashSet<Student>();
             this.Feedbacks = new HashSet<Feedback>();
         }
-        //[StringLength(4)]
+        public int Id { get; set; }
         //[Key, Column(Order = 2)]
+        [StringLength(4)]
         public string Number { get; set; }
         //[Key, Column(Order = 1)]
         public int CampusId { get; set; }

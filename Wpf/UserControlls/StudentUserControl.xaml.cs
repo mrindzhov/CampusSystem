@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Wpf.UserControlls
+namespace CampusSystem.Wpf.UserControlls
 {
     /// <summary>
     /// Interaction logic for StudentUserControl.xaml

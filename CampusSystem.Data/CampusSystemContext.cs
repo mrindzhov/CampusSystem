@@ -39,10 +39,7 @@ namespace CampusSystem.Data
                 .HasColumnAnnotation("Index",
                     new IndexAnnotation(new[] { new IndexAttribute("Index") { IsUnique = true } }));
 
-            modelBuilder.Entity<Room>().HasKey(r => new { r.CampusId, r.Number });
-
-            //modelBuilder.Entity<Room>().HasRequired(r => r.Campus).WithMany(c => c.Rooms)
-            //    .Map(m => m.MapKey(new string[] { "CampusId", "Number" }));
+            //modelBuilder.Entity<Room>().HasKey(r => new { r.CampusId, r.Number });
 
             //modelBuilder.Entity<Room>()
             //    .HasRequired(r => r.Campus)
