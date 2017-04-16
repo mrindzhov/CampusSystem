@@ -8,11 +8,12 @@
     <OutputType>WinExe</OutputType>
     <RootNamespace>Wpf</RootNamespace>
     <AssemblyName>Wpf</AssemblyName>
-    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <WarningLevel>4</WarningLevel>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -112,6 +113,16 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\user_group_new.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CampusSystem.Data\CampusSystem.Data.csproj">
+      <Project>{2c9a7684-8128-4f66-b820-6e8978291206}</Project>
+      <Name>CampusSystem.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CampusSystem.Models\CampusSystem.Models.csproj">
+      <Project>{5fb13890-f682-4a6e-bce5-fe85305f26c2}</Project>
+      <Name>CampusSystem.Models</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

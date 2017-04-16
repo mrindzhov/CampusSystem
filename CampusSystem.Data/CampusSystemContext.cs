@@ -13,6 +13,7 @@ namespace CampusSystem.Data
         {
             Database.SetInitializer(new DropCreateDatabaseIfModelChanges<CampusSystemContext>());
         }
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Entity<University>()

@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using CampusSystem.Data;
 
 namespace CampusSystem.Wpf
 {
@@ -24,7 +25,7 @@ namespace CampusSystem.Wpf
         public MainWindow()
         {
             InitializeComponent();
-
+            //Initializer.In\itDb();
         }
 
         private void ButtonNew_Click(object sender, RoutedEventArgs e)
