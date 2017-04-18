@@ -6,7 +6,7 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{7F492A62-8E5D-4852-A921-563162922EB0}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>Wpf</RootNamespace>
+    <RootNamespace>CampusSystem.Wpf</RootNamespace>
     <AssemblyName>Wpf</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -55,11 +55,35 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="UserControlls\RoomUserControl.xaml.cs">
-      <DependentUpon>RoomUserControl.xaml</DependentUpon>
+    <Compile Include="UserControls\AddCampusUserControl.xaml.cs">
+      <DependentUpon>AddCampusUserControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UserControlls\StudentUserControl.xaml.cs">
-      <DependentUpon>StudentUserControl.xaml</DependentUpon>
+    <Compile Include="UserControls\AddGuestUserControl.xaml.cs">
+      <DependentUpon>AddGuestUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\AddRoomUserControl.xaml.cs">
+      <DependentUpon>AddRoomUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\AddStudentUserControl.xaml.cs">
+      <DependentUpon>AddStudentUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\AddUniversityUserControl.xaml.cs">
+      <DependentUpon>AddUniversityUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\ViewHomeUserControl.xaml.cs">
+      <DependentUpon>ViewHomeUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\ViewRoomUserControl.xaml.cs">
+      <DependentUpon>ViewRoomUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\ViewStudentUserControl.xaml.cs">
+      <DependentUpon>ViewStudentUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\ViewTakingsUserControl.xaml.cs">
+      <DependentUpon>ViewTakingsUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\ViewUnsignedGuestsUserControl.xaml.cs">
+      <DependentUpon>ViewUnsignedGuestsUserControl.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -73,11 +97,43 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="UserControlls\RoomUserControl.xaml">
+    <Page Include="UserControls\AddCampusUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UserControlls\StudentUserControl.xaml">
+    <Page Include="UserControls\AddGuestUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\AddRoomUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\AddStudentUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\AddUniversityUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\ViewHomeUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\ViewRoomUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\ViewStudentUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\ViewTakingsUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\ViewUnsignedGuestsUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -123,6 +179,9 @@
       <Project>{5fb13890-f682-4a6e-bce5-fe85305f26c2}</Project>
       <Name>CampusSystem.Models</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\ecampus.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

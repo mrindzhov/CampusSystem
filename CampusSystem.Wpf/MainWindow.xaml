@@ -3,18 +3,25 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:data="clr-namespace:CampusSystem.Models;assembly=CampusSystem.Models"
         xmlns:local="clr-namespace:CampusSystem.Wpf"
         mc:Ignorable="d"
         Title="Campus" Height="525" Width="700"
         Icon="Images\hotel.ico">
     <Window.Resources>
+        <DataTemplate DataType="{x:Type data:Room}">
+            <TextBlock Text="{Binding Number}"/>
+        </DataTemplate>
         <Style x:Key="NoChromeButton" TargetType="{x:Type Button}">
             <Setter Property="Background" Value="Transparent"/>
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type Button}">
                         <Grid x:Name="Chrome" Background="{TemplateBinding Background}" SnapsToDevicePixels="true">
-                            <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                            <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" 
+                                              Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" 
+                                              SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" 
+                                              VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
                         </Grid>
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsMouseOver" Value="False">
@@ -27,31 +34,64 @@
         </Style>
     </Window.Resources>
     <Grid >
+        <!--<ContextMenu Click="ButtonAddStudents" Margin="0,0,50,0"/>-->
+
         <Grid.RowDefinitions>
-            <RowDefinition Height="55" MinHeight="55"/>
-            <RowDefinition Height="*" />
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="150" />
             <ColumnDefinition/>
-
         </Grid.ColumnDefinitions>
+        <Menu Grid.Row="0">
+            <MenuItem Header="Home" Click="ButtonViewHome"/>
+            <MenuItem Header="View">
+                <MenuItem Header="Takings" Click="ButtonViewTakings">
+                </MenuItem>
+                <MenuItem Header="Unsigned guests" Click="ButtonViewUnsignedGuests">
+                </MenuItem>
+            </MenuItem>
+            <MenuItem Header="Add">
+                <MenuItem Header="Student" Click="ButtonAddStudent">
+                </MenuItem>
+                <MenuItem Header="Guest" Click="ButtonAddGuest">
+                </MenuItem>
+                <MenuItem Header="Room" Click="ButtonAddRoom">
+                </MenuItem>
+                <MenuItem Header="Campus" Click="ButtonAddCampus">
+                </MenuItem>
+                <MenuItem Header="University" Click="ButtonAddUniversity">
+                </MenuItem>
+            </MenuItem>
 
-        <Button Style="{DynamicResource NoChromeButton}" Click="ButtonNew_Click" Grid.Column="0" Grid.Row="0"  HorizontalAlignment="Right" VerticalAlignment="Top"  Width="34" Height="34" Margin="0,15,5,0" >
+        </Menu>
+        <Button Style="{DynamicResource NoChromeButton}" Click="ButtonAddGuest" Grid.Column="0" Grid.Row="1"  
+                HorizontalAlignment="Right" VerticalAlignment="Top"  Width="34" Height="34" Margin="0,14,5,0" >
             <Image Source="Images\user_group_new.png" Stretch="Fill"/>
         </Button>
-        <TextBox Height="34" Width="60"  MaxLength="3" TextAlignment="Left" VerticalAlignment="Top" Grid.Column="0" Grid.Row="0" FontSize="27" HorizontalAlignment="Left" Margin="5,15,0,0" PreviewTextInput="NumberValidationTextBox"/>
+        <TextBox Height="34" Width="60"  MaxLength="3" TextAlignment="Left" VerticalAlignment="Top" Grid.Column="0" Grid.Row="1" FontSize="27" HorizontalAlignment="Left" Margin="5,14,0,0" PreviewTextInput="NumberValidationTextBox"/>
 
-        <ListBox Grid.Row="1" Grid.Column="0" Margin="5,5,5,5">
-            <ListBoxItem>ListBox Item #1</ListBoxItem>
+        <ListView x:Name="RoomsList" ItemsSource="{Binding}" IsSynchronizedWithCurrentItem="True" Grid.Row="3">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Room" DisplayMemberBinding="{Binding Number}"></GridViewColumn>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <!--<ListBox ItemsSource="{Binding}" Grid.Row="3" Grid.Column="0" Margin="5,5,5,5">
+            <ListBoxItem Content="Title" DisplayMemberBinding="{Binding Number}"/>
             <ListBoxItem>ListBox Item #2</ListBoxItem>
             <ListBoxItem>ListBox Item #3</ListBoxItem>
-        </ListBox>
+        </ListBox>-->
 
-        <Button Content="Room" Click="ButtonClickRoom" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Row="0" Grid.Column="1" Height="30" Width="50" Margin="50,0,0,0"/>
-        <Button Content="Students" Click="ButtonClickStudents" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Row="0" Grid.Column="1" Height="30" Width="50" Margin="0,0,50,0"/>
-        <ContentControl x:Name="contentControl" Grid.Row="1" Grid.Column="1" Margin="5,5,5,5"></ContentControl>
+        <Button Content="Room" Click="ButtonViewRoom" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Row="1"
+                Grid.Column="1" Height="30" Width="55" Margin="220,-15,275,-15" />
+        <Button Content="Students" Click="ButtonViewStudents" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Row="1"
+                Grid.Column="1" Height="30" Width="55" Margin="275,-15,215,-15"/>
+        <!--<Image Source="Images/ecampus.jpg" Grid.Row="2" Grid.Column="2"></Image>-->
+
+        <ContentControl x:Name="contentControl" Grid.Row="2" Grid.Column="1" Margin="0,0,0,60" Grid.RowSpan="2"></ContentControl>
     </Grid>
-
 </Window>
-

@@ -13,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace CampusSystem.Wpf.UserControlls
+namespace CampusSystem.Wpf.UserControls
 {
     /// <summary>
-    /// Interaction logic for StudentUserControl.xaml
+    /// Interaction logic for AddGuestUserControl.xaml
     /// </summary>
-    public partial class StudentUserControl : UserControl
+    public partial class AddGuestUserControl : UserControl
     {
-        public StudentUserControl()
+        public AddGuestUserControl()
         {
             InitializeComponent();
         }
