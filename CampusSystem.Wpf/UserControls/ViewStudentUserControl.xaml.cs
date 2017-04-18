@@ -18,9 +18,9 @@ namespace CampusSystem.Wpf.UserControls
     /// <summary>
     /// Interaction logic for StudentUserControl.xaml
     /// </summary>
-    public partial class ViewStudent : UserControl
+    public partial class ViewStudentUserControl : UserControl
     {
-        public ViewStudent()
+        public ViewStudentUserControl()
         {
             InitializeComponent();
         }

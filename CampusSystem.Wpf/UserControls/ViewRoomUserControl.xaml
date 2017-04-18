@@ -6,10 +6,16 @@
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
     <StackPanel Orientation="Vertical">
-        <Label Content="Стая номер: " Margin="30,50,0,0"/>
-        <Label Content="Брой живущи: " Margin="30,0,0,0"/>
+        <Grid>
+            <Label Content="Стая номер: " Margin="30,50,193,0" Target="{Binding ElementName=RoomNumber}"/>
+            <TextBlock x:Name="RoomNumber" Text="{Binding Number}"  FontWeight="Bold" Margin="120,55,66,10"/>
+        </Grid>
+        <Grid>
+            <Label Content="Брой живущи: " Margin="30,0,0,0" Target="{Binding ElementName=StudentsCount}"/>
+            <TextBlock x:Name="StudentsCount" Text="{Binding Student.Count}"  FontWeight="Bold" Margin="120,55,66,10"/>
+        </Grid>
         <Label Content="Обща дължима сума:" Margin="30,0,0,0"/>
         <Label Content="Свободни места:" Margin="30,0,0,0"/>
-        
+
     </StackPanel>
 </UserControl>

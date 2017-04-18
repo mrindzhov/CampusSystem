@@ -76,7 +76,8 @@
         <ListView x:Name="RoomsList" ItemsSource="{Binding}" IsSynchronizedWithCurrentItem="True" Grid.Row="3">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="Room" DisplayMemberBinding="{Binding Number}"></GridViewColumn>
+                    <GridViewColumn Header="Room" DisplayMemberBinding="{Binding Number}">
+                    </GridViewColumn>
                 </GridView>
             </ListView.View>
         </ListView>

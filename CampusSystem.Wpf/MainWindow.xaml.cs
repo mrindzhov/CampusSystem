@@ -14,6 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using CampusSystem.Data;
+using CampusSystem.Wpf.UserControls;
 
 namespace CampusSystem.Wpf
 {
@@ -26,24 +27,61 @@ namespace CampusSystem.Wpf
         {
             InitializeComponent();
             //Initializer.In\itDb();
-        }
-
-        private void ButtonNew_Click(object sender, RoutedEventArgs e)
-        {
-
+            contentControl.Content = new ViewHomeUserControl();
+            DataContext = Initializer.GetRooms();
         }
         private void NumberValidationTextBox(object sender, TextCompositionEventArgs e)
         {
             Regex regex = new Regex("[^0-9]+");
             e.Handled = regex.IsMatch(e.Text);
         }
-        private void ButtonClickRoom(object sender, RoutedEventArgs e)
+        private void ButtonViewRoom(object sender, RoutedEventArgs e)
         {
-            this.contentControl.Content = new UserControlls.RoomUserControl();
+            this.contentControl.Content = new ViewRoomUserControl();
         }
-        private void ButtonClickStudents(object sender, RoutedEventArgs e)
+        private void ButtonViewStudents(object sender, RoutedEventArgs e)
         {
-            this.contentControl.Content = new UserControlls.StudentUserControl();
+            this.contentControl.Content = new ViewStudentUserControl();
+        }
+
+        private void ButtonAddGuest(object sender, RoutedEventArgs e)
+        {
+            this.contentControl.Content = new AddGuestUserControl();
+        }
+
+        private void ButtonAddRoom(object sender, RoutedEventArgs e)
+        {
+            this.contentControl.Content = new AddRoomUserControl();
+        }
+
+        private void ButtonAddCampus(object sender, RoutedEventArgs e)
+        {
+            this.contentControl.Content = new AddCampusUserControl();
+        }
+
+        private void ButtonAddUniversity(object sender, RoutedEventArgs e)
+        {
+            this.contentControl.Content = new AddUniversityUserControl();
+        }
+
+        private void ButtonAddStudent(object sender, RoutedEventArgs e)
+        {
+            this.contentControl.Content = new AddStudentUserControl();
+        }
+
+        private void ButtonViewTakings(object sender, RoutedEventArgs e)
+        {
+            this.contentControl.Content = new ViewTakingsUserControl();
+        }
+
+        private void ButtonViewUnsignedGuests(object sender, RoutedEventArgs e)
+        {
+            this.contentControl.Content = new ViewUnsignedGuestsUserControl();
+        }
+
+        private void ButtonViewHome(object sender, RoutedEventArgs e)
+        {
+            this.contentControl.Content = new ViewHomeUserControl();
         }
     }
 }
