@@ -14,10 +14,10 @@ namespace CampusSystem.Wpf
     /// </summary>
     public partial class App : Application
     {
-        //protected override void OnStartup(StartupEventArgs e)
-        //{
-        //    Initializer.InitDb();
-        //    base.OnStartup(e);
-        //}
+        protected override void OnStartup(StartupEventArgs e)
+        {
+            //Helper.InitDb();
+            base.OnStartup(e);
+        }
     }
 }

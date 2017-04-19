@@ -14,6 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using CampusSystem.Data;
+using CampusSystem.Data.Utility;
 using CampusSystem.Wpf.UserControls;
 
 namespace CampusSystem.Wpf
@@ -26,18 +27,11 @@ namespace CampusSystem.Wpf
         public MainWindow()
         {
             InitializeComponent();
-            //Initializer.In\itDb();
             contentControl.Content = new ViewHomeUserControl();
             RoomsList.ItemsSource = Helper.GetRooms();
-            //List<User> items = new List<User>();
-            //items.Add(new User() { Name = "John Doe", Age = 42, Sex = SexType.Male });
-            //items.Add(new User() { Name = "Jane Doe", Age = 39, Sex = SexType.Female });
-            //items.Add(new User() { Name = "Sammy Doe", Age = 13, Sex = SexType.Male });
-            //lvUsers.ItemsSource = items;
-
-            CollectionView view = (CollectionView)CollectionViewSource.GetDefaultView(RoomsList.ItemsSource);
-            PropertyGroupDescription groupDescription = new PropertyGroupDescription("Campus.Number");
-            view.GroupDescriptions.Add(groupDescription);
+            //CollectionView view = (CollectionView)CollectionViewSource.GetDefaultView(RoomsList.ItemsSource);
+            //PropertyGroupDescription groupDescription = new PropertyGroupDescription("Campus.Number");
+            //view.GroupDescriptions.Add(groupDescription);
         }
 
         private void NumberValidationTextBox(object sender, TextCompositionEventArgs e)
@@ -92,6 +86,13 @@ namespace CampusSystem.Wpf
         private void ButtonViewHome(object sender, RoutedEventArgs e)
         {
             this.contentControl.Content = new ViewHomeUserControl();
+        }
+        private void ButtonLogout(object sender, RoutedEventArgs e)
+        {
+            LoginWindow lw = new LoginWindow();
+            lw.Show();
+            this.Hide();
+            AuthenticationManager.Logout();
         }
     }
 }

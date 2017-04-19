@@ -1,7 +1,5 @@
 ﻿namespace CampusSystem.Client
 {
-    using System.Linq;
-    using CampusSystem.Client.Methods;
     using CampusSystem.Data;
     using CampusSystem.Models;
 

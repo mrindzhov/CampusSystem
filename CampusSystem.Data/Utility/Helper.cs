@@ -29,9 +29,25 @@
             return ctx.Students.ToList();
         }
 
+        public static List<Guest> GetAllUnsignedGuests()
+        {
+            return ctx.Guests.Where(g => g.DateLeft == null).ToList();
+        }
+
         public static int GetStudentsInRoom(string selectedItem)
         {
             return ctx.Students.Where(s => s.Room.Number == selectedItem).Count();
+        }
+
+        public static Campus GetCampus(string campusNumber)
+        {
+            return ctx.Campuses.FirstOrDefault(c => c.Number.Equals(campusNumber));
+        }
+
+        public static void ReleaseGuest(Guest guest)
+        {
+            ctx.Guests.FirstOrDefault(g => g.Id == guest.Id).DateLeft = DateTime.Now;
+            ctx.SaveChanges();
         }
 
         public static Student GetStudentByRoomAndName(string roomNumber, string student)

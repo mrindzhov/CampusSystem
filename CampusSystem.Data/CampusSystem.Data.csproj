@@ -50,7 +50,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CampusSystemContext.cs" />
-    <Compile Include="Initializer.cs" />
+    <Compile Include="Configurations\CampusConfiguration.cs" />
+    <Compile Include="Configurations\GuestConfigruation.cs" />
+    <Compile Include="Configurations\RoomConfiguration.cs" />
+    <Compile Include="Configurations\StudentConfiguration.cs" />
+    <Compile Include="Configurations\UniversityConfiguration.cs" />
+    <Compile Include="Utility\AuthenticationManager.cs" />
+    <Compile Include="Utility\Helper.cs" />
+    <Compile Include="Seed\CampusSystemInitializer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -63,5 +70,6 @@
       <Name>CampusSystem.Models</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

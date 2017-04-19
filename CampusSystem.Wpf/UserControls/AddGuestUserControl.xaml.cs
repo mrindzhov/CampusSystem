@@ -33,29 +33,29 @@ namespace CampusSystem.Wpf.UserControls
         {
             try
             {
-                var fullNameArgs = this.FullName.Text.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries).ToArray();
+                //var fullNameArgs = this.FullName.Text.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries).ToArray();
                 var townName = this.Town.Text.ToString();
                 var student = Helper.GetStudentByRoomAndName(
                         Rooms.SelectedItem.ToString(), Student.SelectedItem.ToString());
 
                 Guest guest = new Guest
                 {
-                    FirstName = fullNameArgs[0] ?? "",
-                    MiddleName = fullNameArgs[1] ?? "",
-                    LastName = fullNameArgs[2] ?? "",
+                    FirstName = this.FirstName.Text ?? "",
+                    MiddleName = this.MiddleName.Text ?? "",
+                    LastName = this.LastName.Text ?? "",
                     StudentVisited = student,
                     Town = Helper.GetTownByName(townName)
 
                 };
-                //Initializer.AddGuest(guest);
-                MessageBox.Show($"Added guest {fullNameArgs} to {student.FullName}", "Confirmation", MessageBoxButton.OK, MessageBoxImage.Information);
+                Helper.AddGuest(guest);
+                MessageBox.Show($"Added guest {this.FirstName.Text} {this.LastName.Text} to {student.FullName}", "Information", MessageBoxButton.OK, MessageBoxImage.Information);
 
                 this.Content = new AddGuestUserControl();
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                MessageBox.Show($"{ex.Message}","Cannot add empty guest",MessageBoxButton.OK,MessageBoxImage.Error);
+                MessageBox.Show($"You need to fill all fields", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
     }

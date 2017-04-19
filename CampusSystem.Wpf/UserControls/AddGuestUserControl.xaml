@@ -19,16 +19,22 @@
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
-                <Label>Name:</Label>
-                <TextBox Name="FullName" Grid.Column="1" Margin="0,0,0,10" />
-                <Label Grid.Row="1">Town:</Label>
-                <TextBox Name="Town"  Grid.Row="1" Grid.Column="1" Margin="0,0,0,10" />
-                <Label Grid.Row="2">Room:</Label>
-                <ComboBox Name="Rooms" Grid.Column="1" Grid.Row="2" Margin="0,0,0,10"/>
+                <Label>FirstName:</Label>
+                <TextBox Name="FirstName" Grid.Column="1" Margin="0,0,0,10" />
+                <Label Grid.Row="1">MiddleName:</Label>
+                <TextBox Name="MiddleName" Grid.Row="1" Grid.Column="1" Margin="0,0,0,10" />
+                <Label Grid.Row="2">LastName:</Label>
+                <TextBox Name="LastName" Grid.Row="2" Grid.Column="1" Margin="0,0,0,10" />
+                <Label Grid.Row="3">Town:</Label>
+                <TextBox Name="Town"  Grid.Row="3" Grid.Column="1" Margin="0,0,0,10" />
+                <Label Grid.Row="4">Room:</Label>
+                <ComboBox Name="Rooms" Grid.Column="1" Grid.Row="4" Margin="0,0,0,10"/>
 
-                <Label Grid.Row="3">Student:</Label>
-                <ComboBox Name="Student" Grid.Column="1" Grid.Row="3" Margin="0,0,0,10"/>
+                <Label Grid.Row="5">Student:</Label>
+                <ComboBox Name="Student" Grid.Column="1" Grid.Row="5" Margin="0,0,0,10"/>
                 <!--<TextBox Name="Student"  Grid.Row="2" Grid.Column="1" Margin="0,0,0,10"/>-->
                 <!--<Label Grid.Row="4">Дата на допускане:</Label>
                 <DatePicker Name="DateEntry" Grid.Row="4" Grid.Column="1" Margin="0,0,0,10"/>-->

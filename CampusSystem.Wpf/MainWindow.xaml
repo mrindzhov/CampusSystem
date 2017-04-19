@@ -7,6 +7,7 @@
         xmlns:local="clr-namespace:CampusSystem.Wpf"
         mc:Ignorable="d"
         Title="Campus" Height="525" Width="700"
+        MinHeight="525" MinWidth="700"
         Icon="Images\hotel.ico">
     <Window.Resources>
         <DataTemplate DataType="{x:Type data:Room}">
@@ -33,7 +34,7 @@
             </Setter>
         </Style>
     </Window.Resources>
-    <Grid >
+    <Grid>
         <!--<ContextMenu Click="ButtonAddStudents" Margin="0,0,50,0"/>-->
 
         <Grid.RowDefinitions>
@@ -54,17 +55,20 @@
                 <MenuItem Header="Unsigned guests" Click="ButtonViewUnsignedGuests">
                 </MenuItem>
             </MenuItem>
-            <MenuItem Header="Add">
-                <MenuItem Header="Student" Click="ButtonAddStudent">
+            <MenuItem Header="Utility">
+                <MenuItem Header="Add">
+                    <MenuItem Header="Student" Click="ButtonAddStudent">
+                    </MenuItem>
+                    <MenuItem Header="Guest" Click="ButtonAddGuest">
+                    </MenuItem>
+                    <MenuItem Header="Room" Click="ButtonAddRoom">
+                    </MenuItem>
+                    <MenuItem Header="Campus" Click="ButtonAddCampus">
+                    </MenuItem>
+                    <MenuItem Header="University" Click="ButtonAddUniversity">
+                    </MenuItem>
                 </MenuItem>
-                <MenuItem Header="Guest" Click="ButtonAddGuest">
-                </MenuItem>
-                <MenuItem Header="Room" Click="ButtonAddRoom">
-                </MenuItem>
-                <MenuItem Header="Campus" Click="ButtonAddCampus">
-                </MenuItem>
-                <MenuItem Header="University" Click="ButtonAddUniversity">
-                </MenuItem>
+                <MenuItem Header="ButtonLogout"></MenuItem>
             </MenuItem>
         </Menu>
 
@@ -92,7 +96,7 @@
                     </GroupStyle.HeaderTemplate>
                 </GroupStyle>
             </ListView.GroupStyle>-->
-            <ListView.GroupStyle>
+            <!--<ListView.GroupStyle>
                 <GroupStyle>
                     <GroupStyle.ContainerStyle>
                         <Style TargetType="{x:Type GroupItem}">
@@ -115,16 +119,22 @@
                         </Style>
                     </GroupStyle.ContainerStyle>
                 </GroupStyle>
-            </ListView.GroupStyle>
+            </ListView.GroupStyle>-->
         </ListView>
-        <Grid Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left">
-            <Button Content="Room" Click="ButtonViewRoom" VerticalAlignment="Center"
-                        HorizontalAlignment="Center" Grid.Row="1"
-                    Grid.Column="1" FontWeight="Bold" BorderThickness="0"  Height="30" Width="55" Margin="220,-15,275,-15" />
-            <Button Content="Students" FontWeight="Bold"  BorderThickness="0" 
-                    Click="ButtonViewStudents" VerticalAlignment="Center" 
-                    HorizontalAlignment="Center" Grid.Row="1"
-                    Grid.Column="1" Height="30" Width="55" Margin="275,-15,215,-15"/>
+        <Grid Grid.Row="1" Grid.Column="1" Width="Auto">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="3*" />
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="5" />
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="3*"/>
+            </Grid.ColumnDefinitions>
+            <Button DockPanel.Dock="Left" Content="Room"  Grid.Column="1"
+                        FontWeight="Bold" BorderThickness="0" Click="ButtonViewRoom"
+                        Height="30" Width="Auto"/>
+            <Button DockPanel.Dock="Right" Content="Students" Grid.Column="3"
+                        FontWeight="Bold"  BorderThickness="0" Click="ButtonViewStudents" 
+                        Height="30" Width="Auto"/>
         </Grid>
         <ContentControl x:Name="contentControl" Grid.Row="2" Grid.Column="1" Margin="0,0,0,60"/>
     </Grid>

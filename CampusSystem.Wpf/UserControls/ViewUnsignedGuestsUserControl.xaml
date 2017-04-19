@@ -8,8 +8,44 @@
              d:DesignHeight="300" d:DesignWidth="300">
     <Grid>
         <StackPanel Orientation="Vertical">
-            <Label Content="Неотписали се студенти: " Margin="30,50,0,0"/>
-            <Label Content="За всеки име и студент: " Margin="30,0,0,0"/>
+            <DataGrid x:Name="Data" AutoGenerateColumns="False" Width="Auto" Margin="54,0,60,0">
+                <!--<DataGrid.ItemContainerStyle>
+                    <Style TargetType="DataGridRow">
+                        <EventSetter Event="MouseDoubleClick" Handler="RowDoubleClick"/>
+                    </Style>
+                </DataGrid.ItemContainerStyle>-->
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Name" Binding="{Binding FullName}" IsReadOnly="True"/>
+                    <DataGridTextColumn Header="DateVisited" Binding="{Binding DateVisited, StringFormat=d}" />
+                </DataGrid.Columns>
+                <DataGrid.RowDetailsTemplate>
+                    <DataTemplate>
+                        <DockPanel Background="DarkKhaki">
+                            <Image DockPanel.Dock="Left" Source="{Binding ImageUrl}" Height="64" Margin="10" />
+                            <Grid Margin="0,10">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+                                <TextBlock Text="ID: " FontWeight="Bold" />
+                                <TextBlock Name="GuestId" Text="{Binding Id}" Grid.Column="1" />
+                                <TextBlock Text="Student: " FontWeight="Bold" Grid.Row="1" />
+                                <TextBlock Text="{Binding StudentVisited.FullName}" Grid.Column="1" Grid.Row="1" />
+                                <TextBlock Text="Room: " FontWeight="Bold" Grid.Row="2" />
+                                <TextBlock Text="{Binding StudentVisited.Room.Number}" Grid.Column="1" Grid.Row="2" />
+                            </Grid>
+                            <Button DockPanel.Dock="Right" Name="ReleaseGuest"
+                                    Content="Release" Click="ButtonReleaseGuest"
+                                    Height="64" Margin="10" ToolTip="Press to release guest"/>
+                        </DockPanel>
+                    </DataTemplate>
+                </DataGrid.RowDetailsTemplate>
+            </DataGrid>
         </StackPanel>
     </Grid>
 </UserControl>
