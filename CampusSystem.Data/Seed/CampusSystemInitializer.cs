@@ -84,7 +84,8 @@ namespace CampusSystem.Data.Seed
                 },
                 UniversityId = 1,
                 Obligations = 44.55m,
-                RoomId = 1
+                RoomId = 1,
+                CampusId = 1
             });
 
             ctx.Students.Add(new Student
@@ -100,7 +101,8 @@ namespace CampusSystem.Data.Seed
                     Name = "Montana"
                 },
                 Obligations = 0,
-                RoomId = 1
+                RoomId = 2,
+                CampusId = 2
             });
 
             ctx.Students.Add(new Student
@@ -116,7 +118,8 @@ namespace CampusSystem.Data.Seed
                     Name = "Petrich"
                 },
                 Obligations = 33.42m,
-                RoomId = 2
+                RoomId = 2,
+                CampusId = 2
             });
 
             ctx.SaveChanges();
@@ -129,7 +132,8 @@ namespace CampusSystem.Data.Seed
                 Town = new Town
                 {
                     Name = "Stara Zagora"
-                }
+                },
+                CampusId = 2
             });
             ctx.SaveChanges();
             ctx.Guests.Add(new Guest
@@ -141,7 +145,8 @@ namespace CampusSystem.Data.Seed
                 {
                     Name = "Nessebar"
                 },
-                StudentVisitedId = 2
+                StudentVisitedId = 2,
+                CampusId =2
             });
             ctx.SaveChanges();
             base.Seed(ctx);

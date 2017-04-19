@@ -6,6 +6,25 @@
              xmlns:local="clr-namespace:CampusSystem.Wpf.UserControls"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
+    <UserControl.Background>
+        <ImageBrush ImageSource="../Images/flat-people-collection.jpg"></ImageBrush>
+    </UserControl.Background>
+    <UserControl.Resources>
+        <Style x:Key="Flat">
+            <Setter Property="Control.Background" Value="{x:Null}" />
+            <Setter Property="Control.BorderBrush" Value="{x:Null}" />
+            <Style.Triggers>
+                <Trigger Property="Control.IsMouseOver" Value="True">
+                    <Setter Property="Control.Background" Value="{x:Null}" />
+                    <Setter Property="Control.BorderBrush" Value="{x:Null}" />
+                    <Setter Property="Control.FontWeight" Value="Bold" />
+                </Trigger>
+                <Trigger Property="Control.IsFocused" Value="True">
+                    <Setter Property="Control.FontWeight" Value="Bold" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </UserControl.Resources>
     <Grid>
         <StackPanel Orientation="Vertical">
             <DataGrid x:Name="Data" AutoGenerateColumns="False" Width="Auto" Margin="54,0,60,0">
@@ -40,7 +59,7 @@
                                 <TextBlock Text="{Binding StudentVisited.Room.Number}" Grid.Column="1" Grid.Row="2" />
                             </Grid>
                             <Button DockPanel.Dock="Right" Name="ReleaseGuest"
-                                    Content="Release" Click="ButtonReleaseGuest"
+                                    Content="Release" Click="ButtonReleaseGuest" Style="{StaticResource Flat}"
                                     Height="64" Margin="10" ToolTip="Press to release guest"/>
                         </DockPanel>
                     </DataTemplate>

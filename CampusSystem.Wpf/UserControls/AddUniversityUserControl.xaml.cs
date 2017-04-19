@@ -24,5 +24,10 @@ namespace CampusSystem.Wpf.UserControls
         {
             InitializeComponent();
         }
+
+        private void AddUniversity(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

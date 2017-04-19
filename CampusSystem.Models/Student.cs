@@ -12,7 +12,7 @@
         public decimal Obligations { get; set; }
 
         public bool IsActive { get; set; }
-        
+
         public int UniversityId { get; set; }
 
         public virtual University University { get; set; }
@@ -20,6 +20,10 @@
         public int RoomId { get; set; }
 
         public virtual Room Room { get; set; }
+
+        public int CampusId { get; set; }
+
+        public virtual Campus Campus { get; set; }
 
         public virtual ICollection<Guest> Guests { get; set; }
 

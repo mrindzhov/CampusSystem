@@ -1,5 +1,6 @@
 ﻿namespace CampusSystem.Client
 {
+    using System.Linq;
     using CampusSystem.Data;
     using CampusSystem.Models;
 
@@ -10,9 +11,9 @@
             //TODO: CREATE TRIGGER FOR ADDING ROOM IN CAMPUS
 
             CampusSystemContext ctx = new CampusSystemContext();
-            //ctx.Database.Initialize(true);
-
+            ctx.Database.Initialize(true);
             //InitialFill.FillIndividualData(ctx);
+            //System.Console.WriteLine(ctx.Rooms.Count());
 
             #region Add rooms in campus
             //ctx.Campuses.Add(new Campus   
@@ -22,32 +23,32 @@
             //});
             //ctx.SaveChanges();
 
-            ctx.Campuses.Add(new Campus
-            {
-                Number = "2",
-                UniversityId = 1
-            }); ctx.SaveChanges();
-            ctx.Rooms.Add(new Room
-            {
-                Number = "302",
-                CampusId = 2
-            });
-            ctx.Rooms.Add(new Room
-            {
-                Number = "403",
-                CampusId = 2
-            });
-            ctx.Rooms.Add(new Room
-            {
-                Number = "304",
-                CampusId = 2
-            });
-            ctx.Rooms.Add(new Room
-            {
-                Number = "205",
-                CampusId = 2
-            });
-            ctx.SaveChanges();
+            //ctx.Campuses.Add(new Campus
+            //{
+            //    Number = "2",
+            //    UniversityId = 1
+            //}); ctx.SaveChanges();
+            //ctx.Rooms.Add(new Room
+            //{
+            //    Number = "302",
+            //    CampusId = 2
+            //});
+            //ctx.Rooms.Add(new Room
+            //{
+            //    Number = "403",
+            //    CampusId = 2
+            //});
+            //ctx.Rooms.Add(new Room
+            //{
+            //    Number = "304",
+            //    CampusId = 2
+            //});
+            //ctx.Rooms.Add(new Room
+            //{
+            //    Number = "205",
+            //    CampusId = 2
+            //});
+            //ctx.SaveChanges();
             #endregion
 
             #region Get Obligations For Campus

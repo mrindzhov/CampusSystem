@@ -16,10 +16,9 @@
 
             //this.HasKey(r => new { r.CampusId, r.Number });
 
-            //this.HasRequired(r => r.Campus)
-            //    .WithMany(c => c.Rooms)
-            //    .HasForeignKey(r => new { r.CampusId, r.Number })
-            //    .WillCascadeOnDelete(false);
+            this.HasRequired(r => r.Campus)
+                .WithMany(c => c.Rooms)
+                .WillCascadeOnDelete(false);
         }
     }
 }

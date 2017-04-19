@@ -6,10 +6,55 @@
              xmlns:local="clr-namespace:CampusSystem.Wpf.UserControls"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
-    <Grid>
+    <UserControl.Background>
+        <ImageBrush ImageSource="../Images/flat-campus.jpg"></ImageBrush>
+    </UserControl.Background>
+    <UserControl.Resources>
+        <Style x:Key="Flat">
+            <Setter Property="Control.Background" Value="{x:Null}" />
+            <Setter Property="Control.BorderBrush" Value="{x:Null}" />
+            <Style.Triggers>
+                <Trigger Property="Control.IsMouseOver" Value="True">
+                    <Setter Property="Control.Background" Value="{x:Null}" />
+                    <Setter Property="Control.BorderBrush" Value="{x:Null}" />
+                    <Setter Property="Control.FontWeight" Value="Bold" />
+                </Trigger>
+                <Trigger Property="Control.IsFocused" Value="True">
+                    <Setter Property="Control.FontWeight" Value="Bold" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </UserControl.Resources>
+
+    <Grid HorizontalAlignment="Center">
         <StackPanel Orientation="Vertical">
-            <Label Content="Номер(име): " Margin="30,50,0,0"/>
-            <Label Content="Университет (тр да стане с меню за избиране): " Margin="30,0,0,0"/>
+            <Grid Margin="10" VerticalAlignment="Center" >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" MinWidth="172" />
+                    <ColumnDefinition Width="Auto" MinWidth="100" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Label>Number:</Label>
+                <TextBox Name="Number" Grid.Column="1" Margin="0,0,0,10" />
+                <Label Grid.Row="2">Password:</Label>
+                <PasswordBox Name="Password" Grid.Column="2" Grid.Row="2" Margin="0,0,0,10"/>
+                <Label Grid.Row="3">Repeat Password:</Label>
+                <PasswordBox Name="RepeatPassword" Grid.Column="2" Grid.Row="3" Margin="0,0,0,10"/>
+                <Label Grid.Row="4">University:</Label>
+                <ComboBox Name="University" Grid.Column="2" Grid.Row="4" Margin="0,0,0,10"/>
+            </Grid>
+            <Button Style="{StaticResource Flat}" Grid.Column="5" Grid.Row="4" HorizontalAlignment="Right" Click="AddCampus"
+            MinWidth="80" Margin="3" Content="Add Campus"  />
+
         </StackPanel>
+
     </Grid>
 </UserControl>

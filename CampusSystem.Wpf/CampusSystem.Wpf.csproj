@@ -190,5 +190,28 @@
   <ItemGroup>
     <Resource Include="Images\ecampus.jpg" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\flat-campus.jpg" />
+    <Resource Include="Images\flat-person.jpg" />
+    <Resource Include="Images\flat-room.png" />
+    <Resource Include="Images\flat-student.jpg" />
+    <Resource Include="Images\flat-town.jpg" />
+    <Resource Include="Images\flat-university.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\flat-university-concept.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\flat-people.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\flat-students.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\flat-money-bag.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\flat-people-collection.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

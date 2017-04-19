@@ -33,7 +33,6 @@ namespace CampusSystem.Wpf.UserControls
         {
             try
             {
-                //var fullNameArgs = this.FullName.Text.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries).ToArray();
                 var townName = this.Town.Text.ToString();
                 var student = Helper.GetStudentByRoomAndName(
                         Rooms.SelectedItem.ToString(), Student.SelectedItem.ToString());

@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using CampusSystem.Data;
+using CampusSystem.Models;
 
 namespace CampusSystem.Wpf.UserControls
 {
@@ -23,6 +25,49 @@ namespace CampusSystem.Wpf.UserControls
         public AddCampusUserControl()
         {
             InitializeComponent();
+            University.ItemsSource = Helper.GetUniversities().Select(u => u.Name);
+            Password.BorderBrush = Brushes.Black;
+            RepeatPassword.BorderBrush = Brushes.Black;
         }
+
+        private void AddCampus(object sender, RoutedEventArgs e)
+        {
+            if (this.Number.Text.Length < 1)
+            {
+                MessageBox.Show($"No empty fields allowed", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            else if (Password.Password.Equals(RepeatPassword.Password)
+                && this.Number.Text != null && this.University.SelectedItem != null)
+            {
+                try
+                {
+                    var campusNum = this.Number.Text.ToString();
+                    University university = Helper.GetUniversityByName(University.SelectedItem.ToString());
+
+                    Campus camp = new Campus
+                    {
+                        Number = campusNum,
+                        UniversityId = university.Id,
+                        Password = Password.Password
+                    };
+                    Helper.AddCampus(camp);
+                    MessageBox.Show($"Added campus {campusNum} to {university.Name}", "Information", MessageBoxButton.OK, MessageBoxImage.Information);
+
+                    this.Content = new AddCampusUserControl();
+
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show($"Invalid data", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+            }
+            else
+            {
+                MessageBox.Show($"Passwords do not match", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                Password.BorderBrush = Brushes.Red;
+                RepeatPassword.BorderBrush = Brushes.Red;
+            }
+        }
+
     }
 }

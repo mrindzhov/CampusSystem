@@ -16,5 +16,10 @@
         public int? StudentVisitedId { get; set; }
 
         public virtual Student StudentVisited { get; set; }
+
+        public int CampusId { get; set; }
+
+        public virtual Campus Campus{ get; set; }
+
     }
 }

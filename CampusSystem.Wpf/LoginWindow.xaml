@@ -5,7 +5,28 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CampusSystem.Wpf"
         mc:Ignorable="d"
-        Title="LoginWindow" Height="300" Width="300">
+        Title="LoginWindow" 
+        ResizeMode="NoResize"
+        Height="300" Width="300">
+    <Window.Background>
+        <ImageBrush ImageSource="Images/flat-university.jpg"></ImageBrush>
+    </Window.Background>
+    <Window.Resources>
+        <Style x:Key="Flat">
+            <Setter Property="Control.Background" Value="{x:Null}" />
+            <Setter Property="Control.BorderBrush" Value="{x:Null}" />
+            <Style.Triggers>
+                <Trigger Property="Control.IsMouseOver" Value="True">
+                    <Setter Property="Control.Background" Value="{x:Null}" />
+                    <Setter Property="Control.BorderBrush" Value="{x:Null}" />
+                    <Setter Property="Control.FontWeight" Value="Bold" />
+                </Trigger>
+                <Trigger Property="Control.IsFocused" Value="True">
+                    <Setter Property="Control.FontWeight" Value="Bold" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
@@ -27,18 +48,19 @@
                 <RowDefinition Height="*" />
                 <RowDefinition Height="*" />
                 <RowDefinition Height="*" />
-                <RowDefinition Height="*" />
                 <RowDefinition Height="2*" />
+
             </Grid.RowDefinitions>
-            <Label Grid.Row="1" Content="Campus:" FontStyle="Italic" HorizontalAlignment="Center"
+            <Label Grid.Row="0" Content="Campus:" FontStyle="Italic" HorizontalAlignment="Center"
                VerticalAlignment="Center" Width="Auto"/>
-            <TextBox Name="Campus" Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center" Width="100" />
-            <Label Grid.Row="3" Content="Password:" FontStyle="Italic" HorizontalAlignment="Center" 
+            <TextBox Name="Campus" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Width="100" />
+            <Label Grid.Row="2" Content="Password:" FontStyle="Italic" HorizontalAlignment="Center" 
                    VerticalAlignment="Center" Width="Auto"/>
-            <PasswordBox Name="Password" Grid.Row="4" HorizontalAlignment="Center" VerticalAlignment="Center"
+            <PasswordBox Name="Password" Grid.Row="3" HorizontalAlignment="Center" VerticalAlignment="Center"
                          Width="100"/>
-            <Button  Content="Login" HorizontalAlignment="Center" Grid.Row="5" 
-                    VerticalAlignment="Center" Width="100" Click="Login"/>
+            <Button Style="{StaticResource Flat}" Content="Login" HorizontalAlignment="Center" Grid.Row="4" 
+                    VerticalAlignment="Center" Width="176" Click="Login" Margin="10,60,10,-23" Height="23"/>
         </Grid>
     </Grid>
+
 </Window>

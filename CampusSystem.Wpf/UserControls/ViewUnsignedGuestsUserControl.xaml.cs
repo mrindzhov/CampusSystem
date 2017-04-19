@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using CampusSystem.Data;
+using CampusSystem.Data.Utility;
 using CampusSystem.Models;
 
 namespace CampusSystem.Wpf.UserControls
@@ -30,7 +31,7 @@ namespace CampusSystem.Wpf.UserControls
 
         private void LoadGuests()
         {
-            Data.ItemsSource = Helper.GetAllUnsignedGuests();
+            Data.ItemsSource = Helper.GetAllUnsignedGuestsForCampus(AuthenticationManager.GetCurrentCampus().Id);
         }
 
         private void ButtonReleaseGuest(object sender, RoutedEventArgs e)

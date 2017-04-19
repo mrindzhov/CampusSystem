@@ -5,6 +5,25 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
+    <UserControl.Background>
+        <ImageBrush ImageSource="../Images/flat-room.png"></ImageBrush>
+    </UserControl.Background>
+    <UserControl.Resources>
+        <Style x:Key="Flat">
+            <Setter Property="Control.Background" Value="{x:Null}" />
+            <Setter Property="Control.BorderBrush" Value="{x:Null}" />
+            <Style.Triggers>
+                <Trigger Property="Control.IsMouseOver" Value="True">
+                    <Setter Property="Control.Background" Value="{x:Null}" />
+                    <Setter Property="Control.BorderBrush" Value="{x:Null}" />
+                    <Setter Property="Control.FontWeight" Value="Bold" />
+                </Trigger>
+                <Trigger Property="Control.IsFocused" Value="True">
+                    <Setter Property="Control.FontWeight" Value="Bold" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </UserControl.Resources>
     <StackPanel Orientation="Vertical">
         <Grid x:Name="TheGrid" >
             <Grid.RowDefinitions>
@@ -20,33 +39,16 @@
                 <RowDefinition Height="*" />
                 <RowDefinition Height="28" />
             </Grid.RowDefinitions>
-            <Label Grid.Row="0" Content="Стая номер: " FontStyle="Italic" HorizontalAlignment="Center" 
-                       Target="{Binding ElementName=RoomNumber}"/>
-            <Label Grid.Row="2" Content="Брой живущи: " FontStyle="Italic" HorizontalAlignment="Center"                   
-                   Target="{Binding ElementName=StudentsCount}" />
-            <Label Grid.Row="4" Content="Общo дължима сума:" FontStyle="Italic" HorizontalAlignment="Center" 
-                   Target="{Binding ElementName=TotalTakings}"/>
-            <TextBlock Grid.Row="1" x:Name="RoomNumber"  Text="{Binding Number}" HorizontalAlignment="Center" FontWeight="Bold" />
-            <TextBlock Grid.Row="3" x:Name="StudentsCount" Text="{Binding Students.Count}"  HorizontalAlignment="Center" FontWeight="Bold"/>
-            <TextBlock Grid.Row="5" x:Name="TotalTakings" Text="{}" HorizontalAlignment="Center" FontWeight="Bold"/>
-        </Grid>
+            <Label Grid.Row="0" Content="Стая номер: " FontStyle="Italic" HorizontalAlignment="Center"/>
+            <Label Grid.Row="2" Content="Брой живущи: " FontStyle="Italic" HorizontalAlignment="Center"/>
+            <Label Grid.Row="4" Content="Общo дължима сума:" FontStyle="Italic" HorizontalAlignment="Center"/>
 
-        <!--<TabControl Grid.ColumnSpan="3" HorizontalAlignment="Left" Height="105" Margin="27,37,0,-102" VerticalAlignment="Top" Width="146">
-                <TabItem Header="TabItem">
-                    <Grid Background="#FFE5E5E5"/>
-                </TabItem>
-                <TabItem Header="TabItem">
-                    <Grid Background="#FFE5E5E5"/>
-                </TabItem>
-            </TabControl>-->
-        <!--
+            <TextBlock Grid.Row="1" x:Name="RoomNumber"  Text="{Binding Number}" 
+                       HorizontalAlignment="Center" FontWeight="Bold" />
+            <TextBlock Grid.Row="3" x:Name="StudentsCount" Text="{Binding Students.Count}" 
+                       HorizontalAlignment="Center" FontWeight="Bold"/>
+            <TextBlock Grid.Row="5" x:Name="TotalTakings"
+                       HorizontalAlignment="Center" FontWeight="Bold"/>
         </Grid>
-        -->
-        <!--<Grid>
-            <Label Content="Свободни места:" Margin="30,0,0,0"/>
-            <Label Content="Брой живущи: " HorizontalAlignment="Center" Margin="30,0,0,0" Target="{Binding ElementName=StudentsCount}"/>
-            <TextBlock x:Name="" Text="{Binding Students.Count}"  FontWeight="Bold" Margin="117,7,69,17"/>
-        </Grid>-->
-
     </StackPanel>
 </UserControl>
