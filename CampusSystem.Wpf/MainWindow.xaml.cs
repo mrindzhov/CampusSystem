@@ -28,8 +28,18 @@ namespace CampusSystem.Wpf
             InitializeComponent();
             //Initializer.In\itDb();
             contentControl.Content = new ViewHomeUserControl();
-            DataContext = Initializer.GetRooms();
+            RoomsList.ItemsSource = Helper.GetRooms();
+            //List<User> items = new List<User>();
+            //items.Add(new User() { Name = "John Doe", Age = 42, Sex = SexType.Male });
+            //items.Add(new User() { Name = "Jane Doe", Age = 39, Sex = SexType.Female });
+            //items.Add(new User() { Name = "Sammy Doe", Age = 13, Sex = SexType.Male });
+            //lvUsers.ItemsSource = items;
+
+            CollectionView view = (CollectionView)CollectionViewSource.GetDefaultView(RoomsList.ItemsSource);
+            PropertyGroupDescription groupDescription = new PropertyGroupDescription("Campus.Number");
+            view.GroupDescriptions.Add(groupDescription);
         }
+
         private void NumberValidationTextBox(object sender, TextCompositionEventArgs e)
         {
             Regex regex = new Regex("[^0-9]+");

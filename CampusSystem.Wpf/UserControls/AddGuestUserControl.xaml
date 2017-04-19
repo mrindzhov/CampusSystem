@@ -6,12 +6,36 @@
              xmlns:local="clr-namespace:CampusSystem.Wpf.UserControls"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
-    <Grid>
+    <Grid HorizontalAlignment="Center">
         <StackPanel Orientation="Vertical">
-            <Label Content="Име: " Margin="30,50,0,0"/>
-            <Label Content="Град: " Margin="30,0,0,0"/>
-            <Label Content="Студент (drop down някакъв):" Margin="30,0,0,0"/>
-            <Label Content="Дата на напускане:" Margin="30,0,0,0"/>
+            <Grid Margin="10" VerticalAlignment="Center" >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" MinWidth="172" />
+                    <ColumnDefinition Width="Auto" MinWidth="100" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Label>Name:</Label>
+                <TextBox Name="FullName" Grid.Column="1" Margin="0,0,0,10" />
+                <Label Grid.Row="1">Town:</Label>
+                <TextBox Name="Town"  Grid.Row="1" Grid.Column="1" Margin="0,0,0,10" />
+                <Label Grid.Row="2">Room:</Label>
+                <ComboBox Name="Rooms" Grid.Column="1" Grid.Row="2" Margin="0,0,0,10"/>
+
+                <Label Grid.Row="3">Student:</Label>
+                <ComboBox Name="Student" Grid.Column="1" Grid.Row="3" Margin="0,0,0,10"/>
+                <!--<TextBox Name="Student"  Grid.Row="2" Grid.Column="1" Margin="0,0,0,10"/>-->
+                <!--<Label Grid.Row="4">Дата на допускане:</Label>
+                <DatePicker Name="DateEntry" Grid.Row="4" Grid.Column="1" Margin="0,0,0,10"/>-->
+            </Grid>
+            <Button Grid.Column="5" Grid.Row="4" HorizontalAlignment="Right" Click="AddGuest"
+            MinWidth="80" Margin="3" Content="Add Guest"  />
+
         </StackPanel>
 
     </Grid>

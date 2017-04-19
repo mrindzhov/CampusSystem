@@ -3,9 +3,49 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:data="clr-namespace:CampusSystem.Models;assembly=CampusSystem.Models"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
+    <UserControl.Resources>
+        <DataTemplate DataType="{x:Type data:Student}"></DataTemplate>
+    </UserControl.Resources>
     <StackPanel Orientation="Vertical">
-        <Label Content="MARTO TI SI Student !!!!"/>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid Name="TheGreatGrid">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="28" />
+                </Grid.RowDefinitions>
+                <Label Grid.Row="0" Content="Име: " FontStyle="Italic" HorizontalAlignment="Center" 
+                       Target="{Binding ElementName=FullName}"/>
+                <Label Grid.Row="2" Content="Университет: " FontStyle="Italic" HorizontalAlignment="Center"                   
+                   Target="{Binding ElementName=StudentsCount}" />
+                <Label Grid.Row="4" Content="Град: " FontStyle="Italic" HorizontalAlignment="Center"                   
+                   Target="{Binding ElementName=StudentsCount}" />
+                <Label Grid.Row="6" Content="Общo дължима сума:" FontStyle="Italic" HorizontalAlignment="Center" 
+                   Target="{Binding ElementName=TotalTakings}"/>
+                <TextBlock Grid.Row="1" x:Name="Name" Text="{Binding FullName}" HorizontalAlignment="Center" FontWeight="Bold" />
+                <TextBlock Grid.Row="3" x:Name="StudentsCount" Text="{Binding Students.Count}"  HorizontalAlignment="Center" FontWeight="Bold"/>
+                <TextBlock Grid.Row="5" x:Name="TotalTakings" Text="{Binding Students.Obligations.Sum()}" HorizontalAlignment="Center" FontWeight="Bold"/>
+            </Grid>
+
+            <GridSplitter HorizontalAlignment="Right" 
+                  VerticalAlignment="Stretch" 
+                  Grid.Column="1" ResizeBehavior="PreviousAndNext"
+                  Width="5" Background="#FFBCBCBC"/>
+        </Grid>
     </StackPanel>
 </UserControl>

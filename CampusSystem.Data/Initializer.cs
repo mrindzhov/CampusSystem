@@ -1,10 +1,12 @@
 ﻿namespace CampusSystem.Data
 {
+    using System;
+    using System.Collections;
     using System.Collections.Generic;
     using System.Linq;
     using CampusSystem.Models;
 
-    public class Initializer
+    public class Helper
     {
 
         private static CampusSystemContext ctx = new CampusSystemContext();
@@ -15,6 +17,48 @@
         public static List<Room> GetRooms()
         {
             return ctx.Rooms.ToList();
+        }
+
+        public static string GetTotalObligationsByRoom(string v)
+        {
+            return ctx.Rooms.FirstOrDefault(r => r.Number == v).Students.Sum(s => s.Obligations).ToString();
+        }
+
+        public static List<Student> GetStudents()
+        {
+            return ctx.Students.ToList();
+        }
+
+        public static int GetStudentsInRoom(string selectedItem)
+        {
+            return ctx.Students.Where(s => s.Room.Number == selectedItem).Count();
+        }
+
+        public static Student GetStudentByRoomAndName(string roomNumber, string student)
+        {
+            return ctx.Students.FirstOrDefault();
+        }
+
+        public static void AddGuest(Guest guest)
+        {
+            ctx.Guests.Add(guest);
+            ctx.SaveChanges();
+        }
+
+        public static Town GetTownByName(string townName)
+        {
+            var town = ctx.Towns.FirstOrDefault(t => t.Name == townName);
+            if (town == null)
+            {
+                var newTown = new Town
+                {
+                    Name = townName
+                };
+                ctx.Towns.Add(newTown);
+                ctx.SaveChanges();
+                return newTown;
+            }
+            return town;
         }
     }
 }

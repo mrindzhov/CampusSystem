@@ -10,7 +10,7 @@
         Icon="Images\hotel.ico">
     <Window.Resources>
         <DataTemplate DataType="{x:Type data:Room}">
-            <TextBlock Text="{Binding Number}"/>
+            <!--<TextBlock Text="{Binding Number}"/>-->
         </DataTemplate>
         <Style x:Key="NoChromeButton" TargetType="{x:Type Button}">
             <Setter Property="Background" Value="Transparent"/>
@@ -42,9 +42,10 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="150" />
-            <ColumnDefinition/>
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="4*"/>
         </Grid.ColumnDefinitions>
+
         <Menu Grid.Row="0">
             <MenuItem Header="Home" Click="ButtonViewHome"/>
             <MenuItem Header="View">
@@ -65,34 +66,66 @@
                 <MenuItem Header="University" Click="ButtonAddUniversity">
                 </MenuItem>
             </MenuItem>
-
         </Menu>
+
         <Button Style="{DynamicResource NoChromeButton}" Click="ButtonAddGuest" Grid.Column="0" Grid.Row="1"  
                 HorizontalAlignment="Right" VerticalAlignment="Top"  Width="34" Height="34" Margin="0,14,5,0" >
             <Image Source="Images\user_group_new.png" Stretch="Fill"/>
         </Button>
-        <TextBox Height="34" Width="60"  MaxLength="3" TextAlignment="Left" VerticalAlignment="Top" Grid.Column="0" Grid.Row="1" FontSize="27" HorizontalAlignment="Left" Margin="5,14,0,0" PreviewTextInput="NumberValidationTextBox"/>
+        <TextBox Height="34" Width="60"  MaxLength="3" TextAlignment="Left"
+                 VerticalAlignment="Top" Grid.Column="0" Grid.Row="1" FontSize="27" 
+                 HorizontalAlignment="Left" Margin="5,14,0,0" PreviewTextInput="NumberValidationTextBox"/>
 
         <ListView x:Name="RoomsList" ItemsSource="{Binding}" IsSynchronizedWithCurrentItem="True" Grid.Row="3">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="Room" DisplayMemberBinding="{Binding Number}">
+                    <GridViewColumn Header="Rooms" DisplayMemberBinding="{Binding Number}">
                     </GridViewColumn>
                 </GridView>
             </ListView.View>
+            <!--<ListView.GroupStyle>
+                <GroupStyle>
+                    <GroupStyle.HeaderTemplate>
+                        <DataTemplate>
+                            <TextBlock FontWeight="Bold" FontSize="14"  Text= "{Binding Name}"/>
+                        </DataTemplate>
+                    </GroupStyle.HeaderTemplate>
+                </GroupStyle>
+            </ListView.GroupStyle>-->
+            <ListView.GroupStyle>
+                <GroupStyle>
+                    <GroupStyle.ContainerStyle>
+                        <Style TargetType="{x:Type GroupItem}">
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate>
+                                        <Expander IsExpanded="True">
+                                            <Expander.Header>
+                                                <StackPanel Orientation="Horizontal">
+                                                    <TextBlock Text="{Binding Name}" FontWeight="Bold" Foreground="Gray" FontSize="22" VerticalAlignment="Bottom" />
+                                                    <TextBlock Text="{Binding ItemCount}" FontSize="22" Foreground="Green" FontWeight="Bold" FontStyle="Italic" Margin="10,0,0,0" VerticalAlignment="Bottom" />
+                                                    <TextBlock Text=" item(s)" FontSize="22" Foreground="Silver" FontStyle="Italic" VerticalAlignment="Bottom" />
+                                                </StackPanel>
+                                            </Expander.Header>
+                                            <ItemsPresenter />
+                                        </Expander>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </GroupStyle.ContainerStyle>
+                </GroupStyle>
+            </ListView.GroupStyle>
         </ListView>
-        <!--<ListBox ItemsSource="{Binding}" Grid.Row="3" Grid.Column="0" Margin="5,5,5,5">
-            <ListBoxItem Content="Title" DisplayMemberBinding="{Binding Number}"/>
-            <ListBoxItem>ListBox Item #2</ListBoxItem>
-            <ListBoxItem>ListBox Item #3</ListBoxItem>
-        </ListBox>-->
-
-        <Button Content="Room" Click="ButtonViewRoom" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Row="1"
-                Grid.Column="1" Height="30" Width="55" Margin="220,-15,275,-15" />
-        <Button Content="Students" Click="ButtonViewStudents" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Row="1"
-                Grid.Column="1" Height="30" Width="55" Margin="275,-15,215,-15"/>
-        <!--<Image Source="Images/ecampus.jpg" Grid.Row="2" Grid.Column="2"></Image>-->
-
-        <ContentControl x:Name="contentControl" Grid.Row="2" Grid.Column="1" Margin="0,0,0,60" Grid.RowSpan="2"></ContentControl>
+        <Grid Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left">
+            <Button Content="Room" Click="ButtonViewRoom" VerticalAlignment="Center"
+                        HorizontalAlignment="Center" Grid.Row="1"
+                    Grid.Column="1" FontWeight="Bold" BorderThickness="0"  Height="30" Width="55" Margin="220,-15,275,-15" />
+            <Button Content="Students" FontWeight="Bold"  BorderThickness="0" 
+                    Click="ButtonViewStudents" VerticalAlignment="Center" 
+                    HorizontalAlignment="Center" Grid.Row="1"
+                    Grid.Column="1" Height="30" Width="55" Margin="275,-15,215,-15"/>
+        </Grid>
+        <ContentControl x:Name="contentControl" Grid.Row="2" Grid.Column="1" Margin="0,0,0,60"/>
     </Grid>
 </Window>

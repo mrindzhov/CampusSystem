@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using CampusSystem.Data;
 
 namespace CampusSystem.Wpf.UserControls
 {
@@ -23,6 +24,9 @@ namespace CampusSystem.Wpf.UserControls
         public ViewRoomUserControl()
         {
             InitializeComponent();
+            //    RoomNumber.Text = roomNumber;
+            //    StudentsCount.Text = Helper.GetStudentsInRoom(roomNumber).ToString();
+            //    TotalTakings.Text = Helper.GetTotalObligationsByRoom(roomNumber);
         }
     }
 }
