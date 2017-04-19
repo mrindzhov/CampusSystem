@@ -1,22 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
-using CampusSystem.Data;
-using CampusSystem.Data.Utility;
-using CampusSystem.Models;
-
-namespace CampusSystem.Wpf
+﻿namespace CampusSystem.Wpf
 {
+    using System;
+    using System.Windows;
+    using CampusSystem.Data.Utility;
+    using CampusSystem.Data.Utility.Services;
+    using CampusSystem.Models;
+
     /// <summary>
     /// Interaction logic for LoginWindow.xaml
     /// </summary>
@@ -35,7 +24,7 @@ namespace CampusSystem.Wpf
                 //var users = dbe.users.FirstOrDefault(a => a.username.Equals(t1.Text));
                 try
                 {
-                    Campus campus = Helper.GetCampus(Campus.Text.ToString());
+                    Campus campus = CampusService.GetCampus(Campus.Text.ToString());
                     if (campus != null)
                     {
                         if (campus.Password.Equals(Password.Password.ToString()))

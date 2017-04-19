@@ -27,7 +27,7 @@
         </Style>
     </UserControl.Resources>
     <StackPanel Orientation="Vertical">
-        <Grid>
+        <!--<Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
@@ -45,6 +45,7 @@
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="28" />
+
                 </Grid.RowDefinitions>
                 <Label Grid.Row="0" Content="Име: " FontStyle="Italic" HorizontalAlignment="Center" 
                        Target="{Binding ElementName=FullName}"/>
@@ -55,14 +56,64 @@
                 <Label Grid.Row="6" Content="Общo дължима сума:" FontStyle="Italic" HorizontalAlignment="Center" 
                    Target="{Binding ElementName=TotalTakings}"/>
                 <TextBlock Grid.Row="1" x:Name="Name" Text="{Binding FullName}" HorizontalAlignment="Center" FontWeight="Bold" />
-                <TextBlock Grid.Row="3" x:Name="StudentsCount" Text="{Binding Students.Count}"  HorizontalAlignment="Center" FontWeight="Bold"/>
-                <TextBlock Grid.Row="5" x:Name="TotalTakings" Text="{Binding Students.Obligations.Sum()}" HorizontalAlignment="Center" FontWeight="Bold"/>
+                <TextBlock Grid.Row="3" x:Name="StudentsCount" Text="{Binding Items.Count}"  HorizontalAlignment="Center" FontWeight="Bold"/>
+                <TextBlock Grid.Row="5" x:Name="TotalTakings" Text="{Binding Obligations}" HorizontalAlignment="Center" FontWeight="Bold"/>
             </Grid>
 
             <GridSplitter HorizontalAlignment="Right" 
                   VerticalAlignment="Stretch" 
                   Grid.Column="1" ResizeBehavior="PreviousAndNext"
                   Width="5" Background="#FFBCBCBC"/>
+        </Grid>-->
+        <Grid>
+            <StackPanel Orientation="Vertical" Background="Transparent" >
+                <DataGrid x:Name="Data" AutoGenerateColumns="False" Width="Auto" Margin="54,0,60,0">
+                    <!--<DataGrid.ItemContainerStyle>
+                    <Style TargetType="DataGridRow">
+                        <EventSetter Event="MouseDoubleClick" Handler="RowDoubleClick"/>
+                    </Style>
+                </DataGrid.ItemContainerStyle>-->
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="StudentId" Binding="{Binding Id}" IsReadOnly="True"/>
+                        <DataGridTextColumn Header="Name" Binding="{Binding FullName}" IsReadOnly="True"/>
+                    </DataGrid.Columns>
+                    <DataGrid.RowDetailsTemplate>
+                        <DataTemplate>
+                            <DockPanel Background="DarkKhaki">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="2*" />
+                                        <ColumnDefinition Width="1*" />
+                                        <ColumnDefinition Width="2*" />
+                                        <ColumnDefinition Width="1*" />
+                                        <ColumnDefinition Width="Auto" />
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                    </Grid.RowDefinitions>
+                                    <TextBlock Text="University: " FontWeight="Bold" />
+                                    <TextBlock Text="{Binding University.Name}" Grid.Column="1" />
+                                    <TextBlock Text="Town: " FontWeight="Bold" Grid.Row="1" />
+                                    <TextBlock Text="{Binding Town.Name}" Grid.Column="1" Grid.Row="1" />
+                                    
+                                    <TextBlock  Text="{Binding Room.Number}" Grid.Column="3" />
+                                    <TextBlock  Text="Room Number: " FontWeight="Bold" Grid.Column="2"/>
+                                    <TextBlock  Text="Obligations: " FontWeight="Bold" Grid.Row="1" Grid.Column="2"/>
+                                    <TextBlock  Text="{Binding Obligations}" Grid.Row="1" Grid.Column="3"/>
+                                    <Button DockPanel.Dock="Bottom" Name="ReleaseGuest"
+                                    Content="Pay debt" Click="ButtonPayObligations" Style="{StaticResource Flat}"
+                                  Width="60"  Height="40" Margin="10" ToolTip="Press to pay debts"
+                                            Grid.Column="4" Grid.RowSpan="2"/>
+                                </Grid>
+                            </DockPanel>
+                        </DataTemplate>
+                    </DataGrid.RowDetailsTemplate>
+                </DataGrid>
+            </StackPanel>
         </Grid>
+
     </StackPanel>
 </UserControl>

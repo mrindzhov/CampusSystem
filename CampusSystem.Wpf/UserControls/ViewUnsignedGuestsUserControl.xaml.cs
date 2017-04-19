@@ -1,23 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using CampusSystem.Data;
-using CampusSystem.Data.Utility;
-using CampusSystem.Models;
-
-namespace CampusSystem.Wpf.UserControls
+﻿namespace CampusSystem.Wpf.UserControls
 {
+    using System.Windows;
+    using System.Windows.Controls;
+    using System.Windows.Input;
+    using CampusSystem.Data.Utility;
+    using CampusSystem.Data.Utility.Services;
+    using CampusSystem.Models;
+
     /// <summary>
     /// Interaction logic for ViewUnsignedGuestsUserControl.xaml
     /// </summary>
@@ -31,7 +20,7 @@ namespace CampusSystem.Wpf.UserControls
 
         private void LoadGuests()
         {
-            Data.ItemsSource = Helper.GetAllUnsignedGuestsForCampus(AuthenticationManager.GetCurrentCampus().Id);
+            Data.ItemsSource = GuestService.GetAllUnsignedGuestsForCampus(AuthenticationManager.GetCurrentCampus().Id);
         }
 
         private void ButtonReleaseGuest(object sender, RoutedEventArgs e)
@@ -42,7 +31,7 @@ namespace CampusSystem.Wpf.UserControls
             MessageBoxResult result = MessageBox.Show($"Are you sure you want to release {guest.FullName}", "Release guest", MessageBoxButton.YesNo, MessageBoxImage.Question);
             if (result == MessageBoxResult.Yes)
             {
-                Helper.ReleaseGuest(guest);
+                GuestService.ReleaseGuest(guest);
             }
             LoadGuests();
         }

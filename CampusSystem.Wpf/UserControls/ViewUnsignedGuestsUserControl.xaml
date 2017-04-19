@@ -3,6 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:data="clr-namespace:CampusSystem.Models;assembly=CampusSystem.Models"
+
              xmlns:local="clr-namespace:CampusSystem.Wpf.UserControls"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
@@ -10,6 +12,7 @@
         <ImageBrush ImageSource="../Images/flat-people-collection.jpg"></ImageBrush>
     </UserControl.Background>
     <UserControl.Resources>
+        <DataTemplate DataType="{x:Type data:Guest}"></DataTemplate>
         <Style x:Key="Flat">
             <Setter Property="Control.Background" Value="{x:Null}" />
             <Setter Property="Control.BorderBrush" Value="{x:Null}" />

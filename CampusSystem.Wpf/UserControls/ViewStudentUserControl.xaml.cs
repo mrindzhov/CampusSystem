@@ -1,22 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Animation;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using CampusSystem.Data;
-
-namespace CampusSystem.Wpf.UserControls
+﻿namespace CampusSystem.Wpf.UserControls
 {
+    using System.Windows;
+    using System.Windows.Controls;
+    using CampusSystem.Data.Utility;
+    using CampusSystem.Data.Utility.Services;
+    using CampusSystem.Models;
+
     /// <summary>
     /// Interaction logic for StudentUserControl.xaml
     /// </summary>
@@ -25,7 +14,28 @@ namespace CampusSystem.Wpf.UserControls
         public ViewStudentUserControl()
         {
             InitializeComponent();
-            
+            //this.DataContext = StudentService.GetStudents();
+            LoadData();
+            //var roomn = DataContext as List<Student>;
+            //roomn.ForEach(r => r.Room.Number);
+        }
+
+        private void LoadData()
+        {
+            Data.ItemsSource = StudentService.GetStudentsByCampus(AuthenticationManager.GetCurrentCampus().Id);
+        }
+
+        private void ButtonPayObligations(object sender, System.Windows.RoutedEventArgs e)
+        {
+            var student = Data.SelectedItem as Student;
+            MessageBoxResult res = MessageBox.Show($"Pay debit for {student.FullName}?",
+                "Confirmation", MessageBoxButton.YesNo, MessageBoxImage.Question);
+            if (res == MessageBoxResult.Yes)
+            {
+                StudentService.PayObligationsById(student.Id);
+                LoadData();
+            }
+
         }
     }
 }

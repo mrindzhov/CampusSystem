@@ -1,12 +1,11 @@
-﻿using System.Text.RegularExpressions;
-using System.Windows;
-using System.Windows.Input;
-using CampusSystem.Data;
-using CampusSystem.Data.Utility;
-using CampusSystem.Wpf.UserControls;
-
-namespace CampusSystem.Wpf
+﻿namespace CampusSystem.Wpf
 {
+    using System.Text.RegularExpressions;
+    using System.Windows;
+    using System.Windows.Input;
+    using CampusSystem.Data.Utility;
+    using CampusSystem.Data.Utility.Services;
+    using CampusSystem.Wpf.UserControls;
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
@@ -17,7 +16,7 @@ namespace CampusSystem.Wpf
             InitializeComponent();
             this.contentControl.Content = new ViewHomeUserControl();
             //RoomsList.ItemsSource = Helper.GetRoomsByCampus(AuthenticationManager.GetCurrentCampus());
-            this.DataContext = Helper.GetRoomsByCampus(AuthenticationManager.GetCurrentCampus());
+            this.DataContext = RoomService.GetRoomsByCampus(AuthenticationManager.GetCurrentCampus());
         }
 
         private void NumberValidationTextBox(object sender, TextCompositionEventArgs e)

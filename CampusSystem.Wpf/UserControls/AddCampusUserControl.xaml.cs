@@ -1,22 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using CampusSystem.Data;
-using CampusSystem.Models;
-
-namespace CampusSystem.Wpf.UserControls
+﻿namespace CampusSystem.Wpf.UserControls
 {
+    using System;
+    using System.Linq;
+    using System.Windows;
+    using System.Windows.Controls;
+    using System.Windows.Media;
+    using CampusSystem.Data.Utility.Services;
+    using CampusSystem.Models;
+
     /// <summary>
     /// Interaction logic for AddCampusUserControl.xaml
     /// </summary>
@@ -25,7 +16,7 @@ namespace CampusSystem.Wpf.UserControls
         public AddCampusUserControl()
         {
             InitializeComponent();
-            University.ItemsSource = Helper.GetUniversities().Select(u => u.Name);
+            University.ItemsSource = GeneralService.GetUniversities().Select(u => u.Name);
             Password.BorderBrush = Brushes.Black;
             RepeatPassword.BorderBrush = Brushes.Black;
         }
@@ -42,7 +33,7 @@ namespace CampusSystem.Wpf.UserControls
                 try
                 {
                     var campusNum = this.Number.Text.ToString();
-                    University university = Helper.GetUniversityByName(University.SelectedItem.ToString());
+                    University university = GeneralService.GetUniversityByName(University.SelectedItem.ToString());
 
                     Campus camp = new Campus
                     {
@@ -50,7 +41,7 @@ namespace CampusSystem.Wpf.UserControls
                         UniversityId = university.Id,
                         Password = Password.Password
                     };
-                    Helper.AddCampus(camp);
+                    CampusService.AddCampus(camp);
                     MessageBox.Show($"Added campus {campusNum} to {university.Name}", "Information", MessageBoxButton.OK, MessageBoxImage.Information);
 
                     this.Content = new AddCampusUserControl();

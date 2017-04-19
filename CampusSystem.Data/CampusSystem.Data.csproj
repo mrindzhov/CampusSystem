@@ -56,9 +56,14 @@
     <Compile Include="Configurations\StudentConfiguration.cs" />
     <Compile Include="Configurations\UniversityConfiguration.cs" />
     <Compile Include="Utility\AuthenticationManager.cs" />
-    <Compile Include="Utility\Helper.cs" />
     <Compile Include="Seed\CampusSystemInitializer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utility\Services\CampusService.cs" />
+    <Compile Include="Utility\Services\GeneralService.cs" />
+    <Compile Include="Utility\Services\GuestService.cs" />
+    <Compile Include="Utility\Services\RoomService.cs" />
+    <Compile Include="Utility\Services\StudentService.cs" />
+    <Compile Include="Utility\Services\TownService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

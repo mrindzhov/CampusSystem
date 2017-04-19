@@ -25,8 +25,7 @@ namespace CampusSystem.Wpf.UserControls
         public ViewRoomUserControl()
         {
             InitializeComponent();
-        
-            
+
             //RoomNumber.Text = roomNumber;
             //StudentsCount.Text = Helper.GetStudentsInRoom(roomNumber).ToString();
             //TotalTakings.Text = Helper.GetTotalObligationsByRoom(roomNumber);

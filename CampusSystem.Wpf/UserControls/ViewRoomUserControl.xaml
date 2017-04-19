@@ -3,12 +3,14 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:data="clr-namespace:CampusSystem.Models;assembly=CampusSystem.Models"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
     <UserControl.Background>
         <ImageBrush ImageSource="../Images/flat-room.png"></ImageBrush>
     </UserControl.Background>
     <UserControl.Resources>
+        <DataTemplate DataType="{x:Type data:Room}"></DataTemplate>
         <Style x:Key="Flat">
             <Setter Property="Control.Background" Value="{x:Null}" />
             <Setter Property="Control.BorderBrush" Value="{x:Null}" />
@@ -25,30 +27,48 @@
         </Style>
     </UserControl.Resources>
     <StackPanel Orientation="Vertical">
-        <Grid x:Name="TheGrid" >
+        <Grid Margin="10" VerticalAlignment="Center" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <Label Grid.Row="0" Content="Стая номер: " FontStyle="Italic" HorizontalAlignment="Left"/>
+            <Label Grid.Row="1" Content="Брой живущи: " FontStyle="Italic" HorizontalAlignment="Left"/>
+            <TextBlock Grid.Row="0" Grid.Column="1" x:Name="RoomNumber"  Text="{Binding Number}" 
+                       HorizontalAlignment="Center" FontWeight="Bold" />
+            <TextBlock Grid.Row="1" x:Name="StudentsCount" Text="{Binding Students.Count}" 
+                       Grid.Column="1" 
+                       HorizontalAlignment="Center" FontWeight="Bold"/>
+        </Grid>
+
+        <!--<Grid x:Name="TheGrid" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="*" />
-                <RowDefinition Height="*" />
-                <RowDefinition Height="28" />
             </Grid.RowDefinitions>
             <Label Grid.Row="0" Content="Стая номер: " FontStyle="Italic" HorizontalAlignment="Center"/>
             <Label Grid.Row="2" Content="Брой живущи: " FontStyle="Italic" HorizontalAlignment="Center"/>
-            <Label Grid.Row="4" Content="Общo дължима сума:" FontStyle="Italic" HorizontalAlignment="Center"/>
+            -->
+        <!--<Label Grid.Row="4" Content="Общo дължима сума:" FontStyle="Italic" HorizontalAlignment="Center"/>-->
 
-            <TextBlock Grid.Row="1" x:Name="RoomNumber"  Text="{Binding Number}" 
+        <!--<TextBlock Grid.Row="1" x:Name="RoomNumber"  Text="{Binding Number}" 
                        HorizontalAlignment="Center" FontWeight="Bold" />
             <TextBlock Grid.Row="3" x:Name="StudentsCount" Text="{Binding Students.Count}" 
-                       HorizontalAlignment="Center" FontWeight="Bold"/>
-            <TextBlock Grid.Row="5" x:Name="TotalTakings"
-                       HorizontalAlignment="Center" FontWeight="Bold"/>
-        </Grid>
+                       HorizontalAlignment="Center" FontWeight="Bold"/>-->
+        <!--<TextBlock Grid.Row="5" x:Name="TotalTakings" Text="{Binding Students.Obligations.Sum}"
+                       HorizontalAlignment="Center" FontWeight="Bold"/>-->
+        <!--
+        </Grid>-->
     </StackPanel>
 </UserControl>

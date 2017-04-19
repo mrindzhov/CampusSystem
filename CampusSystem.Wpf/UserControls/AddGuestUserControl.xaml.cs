@@ -1,22 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using CampusSystem.Data;
-using CampusSystem.Models;
-
-namespace CampusSystem.Wpf.UserControls
+﻿namespace CampusSystem.Wpf.UserControls
 {
+    using System;
+    using System.Linq;
+    using System.Windows;
+    using System.Windows.Controls;
+    using CampusSystem.Data.Utility.Services;
+    using CampusSystem.Models;
+
     /// <summary>
     /// Interaction logic for AddGuestUserControl.xaml
     /// </summary>
@@ -25,8 +15,8 @@ namespace CampusSystem.Wpf.UserControls
         public AddGuestUserControl()
         {
             InitializeComponent();
-            Rooms.ItemsSource = Helper.GetRooms().Select(r => r.Number);
-            Student.ItemsSource = Helper.GetStudents().Select(c => c.FullName);
+            Rooms.ItemsSource = RoomService.GetRooms().Select(r => r.Number);
+            Student.ItemsSource = StudentService.GetStudents().Select(c => c.FullName);
         }
 
         private void AddGuest(object sender, RoutedEventArgs e)
@@ -34,7 +24,7 @@ namespace CampusSystem.Wpf.UserControls
             try
             {
                 var townName = this.Town.Text.ToString();
-                var student = Helper.GetStudentByRoomAndName(
+                var student = RoomService.GetStudentByRoomAndName(
                         Rooms.SelectedItem.ToString(), Student.SelectedItem.ToString());
 
                 Guest guest = new Guest
@@ -43,10 +33,10 @@ namespace CampusSystem.Wpf.UserControls
                     MiddleName = this.MiddleName.Text ?? "",
                     LastName = this.LastName.Text ?? "",
                     StudentVisited = student,
-                    Town = Helper.GetTownByName(townName)
+                    Town = TownService.GetTownByName(townName)
 
                 };
-                Helper.AddGuest(guest);
+                GuestService.AddGuest(guest);
                 MessageBox.Show($"Added guest {this.FirstName.Text} {this.LastName.Text} to {student.FullName}", "Information", MessageBoxButton.OK, MessageBoxImage.Information);
 
                 this.Content = new AddGuestUserControl();

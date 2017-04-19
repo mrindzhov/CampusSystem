@@ -1,23 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using CampusSystem.Data;
-using CampusSystem.Data.Utility;
-using CampusSystem.Models;
-
-namespace CampusSystem.Wpf.UserControls
+﻿namespace CampusSystem.Wpf.UserControls
 {
+    using System;
+    using System.Linq;
+    using System.Windows;
+    using System.Windows.Controls;
+    using CampusSystem.Data.Utility;
+    using CampusSystem.Data.Utility.Services;
+    using CampusSystem.Models;
+
     /// <summary>
     /// Interaction logic for AddStudentUserControl.xaml
     /// </summary>
@@ -27,9 +17,9 @@ namespace CampusSystem.Wpf.UserControls
         public AddStudentUserControl()
         {
             InitializeComponent();
-            this.Rooms.ItemsSource = Helper.GetRoomsByCampus(campus).Select(r => r.Number);
-            this.University.ItemsSource = Helper.GetUniversities().Select(u => u.Name);
-            this.Town.ItemsSource = Helper.GetTowns().Select(t => t.Name);
+            this.Rooms.ItemsSource = RoomService.GetRoomsByCampus(campus).Select(r => r.Number);
+            this.University.ItemsSource = GeneralService.GetUniversities().Select(u => u.Name);
+            this.Town.ItemsSource = TownService.GetTowns().Select(t => t.Name);
         }
 
         private void AddStudent(object sender, RoutedEventArgs e)
@@ -44,9 +34,9 @@ namespace CampusSystem.Wpf.UserControls
             {
                 try
                 {
-                    Room room = Helper.getRoomInCampusByNumber(this.Rooms.SelectedItem.ToString(), campus.Id);
-                    University university = Helper.GetUniversityByName(University.SelectedItem.ToString());
-                    Town town = Helper.GetTownByName(this.Town.SelectedItem.ToString());
+                    Room room = RoomService.getRoomInCampusByNumber(this.Rooms.SelectedItem.ToString(), campus.Id);
+                    University university = GeneralService.GetUniversityByName(University.SelectedItem.ToString());
+                    Town town = TownService.GetTownByName(this.Town.SelectedItem.ToString());
                     Student student = new Student
                     {
                         FirstName = this.FirstName.Text,
@@ -59,7 +49,7 @@ namespace CampusSystem.Wpf.UserControls
                         RoomId = room.Id,
                         TownId = town.Id
                     };
-                    Helper.AddStudent(student);
+                    StudentService.AddStudent(student);
                     MessageBox.Show("Added student successfully", "Information", MessageBoxButton.OK, MessageBoxImage.Information);
 
                     this.Content = new AddStudentUserControl();
