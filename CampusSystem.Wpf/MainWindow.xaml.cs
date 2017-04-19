@@ -1,18 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
+﻿using System.Text.RegularExpressions;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using CampusSystem.Data;
 using CampusSystem.Data.Utility;
 using CampusSystem.Wpf.UserControls;
@@ -27,11 +15,9 @@ namespace CampusSystem.Wpf
         public MainWindow()
         {
             InitializeComponent();
-            contentControl.Content = new ViewHomeUserControl();
-            RoomsList.ItemsSource = Helper.GetRooms();
-            //CollectionView view = (CollectionView)CollectionViewSource.GetDefaultView(RoomsList.ItemsSource);
-            //PropertyGroupDescription groupDescription = new PropertyGroupDescription("Campus.Number");
-            //view.GroupDescriptions.Add(groupDescription);
+            this.contentControl.Content = new ViewHomeUserControl();
+            //RoomsList.ItemsSource = Helper.GetRoomsByCampus(AuthenticationManager.GetCurrentCampus());
+            this.DataContext = Helper.GetRoomsByCampus(AuthenticationManager.GetCurrentCampus());
         }
 
         private void NumberValidationTextBox(object sender, TextCompositionEventArgs e)
@@ -39,15 +25,6 @@ namespace CampusSystem.Wpf
             Regex regex = new Regex("[^0-9]+");
             e.Handled = regex.IsMatch(e.Text);
         }
-        private void ButtonViewRoom(object sender, RoutedEventArgs e)
-        {
-            this.contentControl.Content = new ViewRoomUserControl();
-        }
-        private void ButtonViewStudents(object sender, RoutedEventArgs e)
-        {
-            this.contentControl.Content = new ViewStudentUserControl();
-        }
-
         private void ButtonAddGuest(object sender, RoutedEventArgs e)
         {
             this.contentControl.Content = new AddGuestUserControl();
@@ -73,6 +50,15 @@ namespace CampusSystem.Wpf
             this.contentControl.Content = new AddStudentUserControl();
         }
 
+        private void ButtonViewRoom(object sender, RoutedEventArgs e)
+        {
+            this.contentControl.Content = new ViewRoomUserControl();
+        }
+        private void ButtonViewStudents(object sender, RoutedEventArgs e)
+        {
+            this.contentControl.Content = new ViewStudentUserControl();
+        }
+
         private void ButtonViewTakings(object sender, RoutedEventArgs e)
         {
             this.contentControl.Content = new ViewTakingsUserControl();
@@ -91,7 +77,7 @@ namespace CampusSystem.Wpf
         {
             LoginWindow lw = new LoginWindow();
             lw.Show();
-            this.Hide();
+            this.Close();
             AuthenticationManager.Logout();
         }
     }

@@ -30,32 +30,41 @@ namespace CampusSystem.Wpf
         private void Login(object sender, RoutedEventArgs e)
         {
             //DatabaseEntities dbe = new DatabaseEntities();
-            if (Campus.Text != string.Empty || Password.Password != string.Empty || Password.Password.Length <= 3)
+            if (Campus.Text != string.Empty && Password.Password != string.Empty && Password.Password.Length >= 3)
             {
                 //var users = dbe.users.FirstOrDefault(a => a.username.Equals(t1.Text));
-                Campus campus = Helper.GetCampus(Campus.Text.ToString());
-                if (campus != null)
+                try
                 {
-                    if (campus.Password.Equals(Password.Password.ToString()))
+                    Campus campus = Helper.GetCampus(Campus.Text.ToString());
+                    if (campus != null)
                     {
-                        AuthenticationManager.Login(campus);
-                        MainWindow mw = new MainWindow();
-                        mw.Owner = this;
-                        this.Hide();
-                        mw.ShowDialog();
-                        //WPFListview l1 = new WPFListview();
-                        //l1.ShowDialog();
-                        //==> GO TO MAINWINDOW
+                        if (campus.Password.Equals(Password.Password.ToString()))
+                        {
+                            AuthenticationManager.Login(campus);
+                            MainWindow mw = new MainWindow();
+                            //mw.Owner = this;
+                            this.Close();
+                            mw.ShowDialog();
+                        }
+                        else
+                        {
+                            MessageBoxResult msgr = MessageBox.Show("Invalid password or campus!", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                        }
                     }
                     else
                     {
                         MessageBoxResult msgr = MessageBox.Show("Invalid password or campus!", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                     }
                 }
-                else
+                catch (Exception)
                 {
                     MessageBoxResult msgr = MessageBox.Show("Invalid password or campus!", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
+
+            }
+            else
+            {
+                MessageBoxResult msgr = MessageBox.Show("Invalid password or campus!", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
     }
