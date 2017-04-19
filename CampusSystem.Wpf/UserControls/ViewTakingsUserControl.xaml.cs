@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using CampusSystem.Data;
+using CampusSystem.Data.Utility;
 
 namespace CampusSystem.Wpf.UserControls
 {
@@ -23,6 +25,7 @@ namespace CampusSystem.Wpf.UserControls
         public ViewTakingsUserControl()
         {
             InitializeComponent();
+            this.Takings.Text = Helper.GetTotalTakingsForCampus(AuthenticationManager.GetCurrentCampus().Id).ToString();
         }
     }
 }

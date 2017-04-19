@@ -31,6 +31,14 @@
             }
         }
 
+        public static decimal GetTotalTakingsForCampus(int id)
+        {
+            using (CampusSystemContext ctx = new CampusSystemContext())
+            {
+                return ctx.Campuses.FirstOrDefault(c => c.Id == id).Students.Sum(s => s.Obligations);
+            }
+        }
+
         public static IEnumerable<University> GetUniversities()
         {
             using (CampusSystemContext ctx = new CampusSystemContext())
@@ -39,11 +47,46 @@
             }
         }
 
+        public static List<Town> GetTowns()
+        {
+            using (CampusSystemContext ctx = new CampusSystemContext())
+            {
+                return ctx.Towns.ToList();
+            }
+        }
+
+        public static void AddRoomToCampus(Room room)
+        {
+            using (CampusSystemContext ctx = new CampusSystemContext())
+            {
+                ctx.Rooms.Add(room);
+                ctx.SaveChanges();
+            }
+        }
+
+        public static Room getRoomInCampusByNumber(string roomNumber, int campusId)
+        {
+            using (CampusSystemContext ctx = new CampusSystemContext())
+            {
+                return ctx.Campuses.FirstOrDefault(c => c.Id == campusId).Rooms.FirstOrDefault(r => r.Number == roomNumber);
+            }
+
+        }
+
         public static List<Guest> GetAllUnsignedGuestsForCampus(int id)
         {
             using (CampusSystemContext ctx = new CampusSystemContext())
             {
                 return ctx.Campuses.FirstOrDefault(c => c.Id == id).Guests.Where(g => g.DateLeft == null).ToList();
+            }
+        }
+
+        public static void AddStudent(Student student)
+        {
+            using (CampusSystemContext ctx = new CampusSystemContext())
+            {
+                ctx.Students.Add(student);
+                ctx.SaveChanges();
             }
         }
 

@@ -54,9 +54,6 @@
 
                 <Label Grid.Row="5">Student:</Label>
                 <ComboBox Name="Student" Grid.Column="1" Grid.Row="5" Margin="0,0,0,10"/>
-                <!--<TextBox Name="Student"  Grid.Row="2" Grid.Column="1" Margin="0,0,0,10"/>-->
-                <!--<Label Grid.Row="4">Дата на допускане:</Label>
-                <DatePicker Name="DateEntry" Grid.Row="4" Grid.Column="1" Margin="0,0,0,10"/>-->
             </Grid>
             <Button Grid.Column="5" Grid.Row="4" HorizontalAlignment="Right" Click="AddGuest"
             MinWidth="80" Margin="3" Content="Add Guest"  />

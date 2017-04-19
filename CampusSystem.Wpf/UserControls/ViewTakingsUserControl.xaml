@@ -27,8 +27,22 @@
     </UserControl.Resources>
     <Grid>
         <StackPanel Orientation="Vertical">
-            <Label Content="Oбщо задължения: " Margin="30,50,0,0"/>
-            <Label Content="некви неща: " Margin="30,0,0,0"/>
+            <Grid Margin="10" VerticalAlignment="Center" >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30" />
+                    <RowDefinition Height="30" />
+                    <RowDefinition Height="30" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Label>Total takings from students:</Label>
+                <TextBox Name="Takings" Grid.Column="0" Grid.Row="1" Width="100" FontSize="30"
+                     IsReadOnly="True"    HorizontalAlignment="Left" Grid.RowSpan="2"/>
+
+            </Grid>
         </StackPanel>
     </Grid>
 </UserControl>

@@ -24,13 +24,42 @@
             </Style.Triggers>
         </Style>
     </UserControl.Resources>
-    <Grid>
+    <Grid HorizontalAlignment="Center">
         <StackPanel Orientation="Vertical">
-            <Label Content="Име: " Margin="30,50,0,0"/>
-            <Label Content="Град: " Margin="30,0,0,0"/>
-            <Label Content="Задължения:" Margin="30,0,0,0"/>
-            <Label Content="Стая:" Margin="30,0,0,0"/>
+            <Grid Margin="10" VerticalAlignment="Center" >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" MinWidth="172" />
+                    <ColumnDefinition Width="Auto" MinWidth="100" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Label>FirstName:</Label>
+                <TextBox Name="FirstName" Grid.Column="1" Margin="0,0,0,10" />
+                <Label Grid.Row="1">MiddleName:</Label>
+                <TextBox Name="MiddleName" Grid.Row="1" Grid.Column="1" Margin="0,0,0,10" />
+                <Label Grid.Row="2">LastName:</Label>
+                <TextBox Name="LastName" Grid.Row="2" Grid.Column="1" Margin="0,0,0,10" />
+                <Label Grid.Row="3">Town:</Label>
+                <ComboBox Name="Town"  Grid.Row="3" Grid.Column="1" Margin="0,0,0,10" />
+                <Label Grid.Row="4">Room:</Label>
+                <ComboBox Name="Rooms" Grid.Column="1" Grid.Row="4" Margin="0,0,0,10"/>
+                <Label Grid.Row="5">Obligations:</Label>
+                <TextBox Name="Obligations" Grid.Column="1" Grid.Row="5" Margin="0,0,0,10"/>
+                <Label Grid.Row="6">University:</Label>
+                <ComboBox Name="University" Grid.Column="1" Grid.Row="6" Margin="0,0,0,10"/>
+
+            </Grid>
+            <Button Grid.Column="5" Grid.Row="4" HorizontalAlignment="Right" Click="AddStudent"
+            MinWidth="80" Margin="3" Content="Add Guest"  />
 
         </StackPanel>
+
     </Grid>
 </UserControl>

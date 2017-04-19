@@ -12,6 +12,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using CampusSystem.Data;
+using CampusSystem.Data.Utility;
+using CampusSystem.Models;
 
 namespace CampusSystem.Wpf.UserControls
 {
@@ -23,6 +26,36 @@ namespace CampusSystem.Wpf.UserControls
         public AddRoomUserControl()
         {
             InitializeComponent();
+        }
+
+        private void AddRoom(object sender, RoutedEventArgs e)
+        {
+            var roomNumber = Number.Text;
+            if (roomNumber.Length < 3)
+            {
+                MessageBox.Show($"You need to insert room number", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            else
+            {
+                try
+                {
+                    var campus = AuthenticationManager.GetCurrentCampus();
+                    Room room = new Room
+                    {
+                        Number = roomNumber,
+                        CampusId = campus.Id
+                    };
+                    Helper.AddRoomToCampus(room);
+                    MessageBox.Show($"Added room {room.Number} to {campus.Number} campus", "Information", MessageBoxButton.OK, MessageBoxImage.Information);
+                    new MainWindow().RoomsList.ItemsSource = Helper.GetRoomsByCampus(campus).ToList();
+                    this.Content = new AddRoomUserControl();
+
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show($"You need to insert room number", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+            }
         }
     }
 }
