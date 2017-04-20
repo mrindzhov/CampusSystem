@@ -11,7 +11,7 @@ namespace CampusSystem.Data
         public CampusSystemContext()
             : base("name=CampusSystemContext")
         {
-            Database.SetInitializer(new CampusSystemInitializer());
+            //Database.SetInitializer(new CampusSystemInitializer());
         }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)

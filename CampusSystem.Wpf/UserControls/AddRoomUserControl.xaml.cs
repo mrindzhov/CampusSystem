@@ -1,7 +1,6 @@
 ﻿namespace CampusSystem.Wpf.UserControls
 {
     using System;
-    using System.Linq;
     using System.Windows;
     using System.Windows.Controls;
     using CampusSystem.Data.Utility;

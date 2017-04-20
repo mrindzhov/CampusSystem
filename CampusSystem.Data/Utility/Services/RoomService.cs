@@ -1,6 +1,6 @@
-﻿using System;
-namespace CampusSystem.Data.Utility.Services
+﻿namespace CampusSystem.Data.Utility.Services
 {
+    using System;
     using System.Collections.Generic;
     using System.Linq;
     using CampusSystem.Models;
@@ -61,7 +61,6 @@ namespace CampusSystem.Data.Utility.Services
                 return ctx.Students.Where(s => s.Room.Number == roomNumber).Count();
             }
         }
-        //TO DO !!!
         public static Student GetStudentByRoomAndName(string roomNumber, string student)
         {
             using (CampusSystemContext ctx = new CampusSystemContext())
