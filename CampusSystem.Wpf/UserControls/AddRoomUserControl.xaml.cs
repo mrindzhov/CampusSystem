@@ -37,13 +37,13 @@
                     };
                     RoomService.AddRoomToCampus(room);
                     MessageBox.Show($"Added room {room.Number} to {campus.Number} campus", "Information", MessageBoxButton.OK, MessageBoxImage.Information);
-                    new MainWindow().RoomsList.ItemsSource = RoomService.GetRoomsByCampus(campus).ToList();
+                    //mw.Owner = this;
                     this.Content = new AddRoomUserControl();
 
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
-                    MessageBox.Show($"You need to insert room number", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    MessageBox.Show($"{ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
             }
         }
