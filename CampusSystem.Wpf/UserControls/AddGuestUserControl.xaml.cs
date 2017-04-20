@@ -4,6 +4,7 @@
     using System.Linq;
     using System.Windows;
     using System.Windows.Controls;
+    using CampusSystem.Data.Utility;
     using CampusSystem.Data.Utility.Services;
     using CampusSystem.Models;
 
@@ -15,8 +16,8 @@
         public AddGuestUserControl()
         {
             InitializeComponent();
-            Rooms.ItemsSource = RoomService.GetRooms().Select(r => r.Number);
-            Student.ItemsSource = StudentService.GetStudents().Select(c => c.FullName);
+            Rooms.ItemsSource = RoomService.GetRoomsByCampus(AuthenticationManager.GetCurrentCampus()).Select(r => r.Number);
+            Student.ItemsSource = StudentService.GetStudentsByCampus(AuthenticationManager.GetCurrentCampus().Id).Select(c => c.FullName);
         }
 
         private void AddGuest(object sender, RoutedEventArgs e)

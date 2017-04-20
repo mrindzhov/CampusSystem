@@ -74,6 +74,7 @@
         }
         private void ButtonLogout(object sender, RoutedEventArgs e)
         {
+
             LoginWindow lw = new LoginWindow();
             lw.Show();
             this.Close();
