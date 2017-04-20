@@ -1,12 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using CampusSystem.Models;
-
 namespace CampusSystem.Data.Utility.Services
 {
+    using System.Collections.Generic;
+    using System.Linq;
+    using CampusSystem.Models;
+
     public class RoomService
     {
         public static List<Room> GetRooms()
@@ -21,15 +19,22 @@ namespace CampusSystem.Data.Utility.Services
         {
             using (CampusSystemContext ctx = new CampusSystemContext())
             {
-                return ctx.Rooms.Include("Students").Where(r => r.CampusId == campus.Id).ToList();
+                return ctx.Rooms.Include("Students").Where(r => r.CampusId == campus.Id).OrderBy(r => r.Number).ToList();
             }
         }
         public static void AddRoomToCampus(Room room)
         {
             using (CampusSystemContext ctx = new CampusSystemContext())
             {
-                ctx.Rooms.Add(room);
-                ctx.SaveChanges();
+                if (!ctx.Rooms.Any(r => r.Number == room.Number && r.CampusId == room.CampusId))
+                {
+                    ctx.Rooms.Add(room);
+                    ctx.SaveChanges();
+                }
+                else
+                {
+                    throw new InvalidOperationException("Cannot add already existing room to campus.");
+                }
             }
         }
 

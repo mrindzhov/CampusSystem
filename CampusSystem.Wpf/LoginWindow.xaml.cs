@@ -18,10 +18,8 @@
 
         private void Login(object sender, RoutedEventArgs e)
         {
-            //DatabaseEntities dbe = new DatabaseEntities();
             if (Campus.Text != string.Empty && Password.Password != string.Empty && Password.Password.Length >= 3)
             {
-                //var users = dbe.users.FirstOrDefault(a => a.username.Equals(t1.Text));
                 try
                 {
                     Campus campus = CampusService.GetCampus(Campus.Text.ToString());
