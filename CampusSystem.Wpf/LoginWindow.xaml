@@ -40,10 +40,6 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <Grid Grid.Row="1" Grid.Column="1">
-            <!--<Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>-->
             <Grid.RowDefinitions>
                 <RowDefinition Height="*" />
                 <RowDefinition Height="*" />
@@ -54,12 +50,12 @@
             </Grid.RowDefinitions>
             <Label Grid.Row="0" Content="Campus:" FontStyle="Italic" HorizontalAlignment="Center"
                VerticalAlignment="Center" Width="Auto"/>
-            <TextBox Name="Campus" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Width="100" />
+            <TextBox Text="1" Name="Campus" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Width="100" />
             <Label Grid.Row="2" Content="Password:" FontStyle="Italic" HorizontalAlignment="Center" 
                    VerticalAlignment="Center" Width="Auto"/>
-            <PasswordBox Name="Password" Grid.Row="3" HorizontalAlignment="Center" VerticalAlignment="Center"
+            <PasswordBox   Name="Password" Grid.Row="3" HorizontalAlignment="Center" VerticalAlignment="Center"
                          Width="100"/>
-            <Button Style="{StaticResource Flat}" Content="Login" HorizontalAlignment="Center" Grid.Row="4" 
+            <Button Style="{StaticResource Flat}" Content="Login" HorizontalAlignment="Center" Grid.Row="4" TabIndex="0"
                     VerticalAlignment="Center" Width="176" Click="Login" Margin="10,60,10,-23" Height="23"/>
         </Grid>
     </Grid>

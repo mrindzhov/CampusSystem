@@ -5,6 +5,7 @@
     using System.Windows.Input;
     using CampusSystem.Data.Utility;
     using CampusSystem.Data.Utility.Services;
+    using CampusSystem.Models;
     using CampusSystem.Wpf.UserControls;
     /// <summary>
     /// Interaction logic for MainWindow.xaml
@@ -79,6 +80,12 @@
             lw.Show();
             this.Close();
             AuthenticationManager.Logout();
+        }
+
+        private void RoomsList_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
+        {
+            var test = ((Room)RoomsList.SelectedItem).Number;
+            System.Console.WriteLine(e);
         }
     }
 }

@@ -13,11 +13,13 @@
     {
         public LoginWindow()
         {
-            InitializeComponent();
+            //InitializeComponent();
         }
 
         private void Login(object sender, RoutedEventArgs e)
         {
+            this.Password.Password = "campus1";
+            this.Campus.Text = "1";
             if (Campus.Text != string.Empty && Password.Password != string.Empty && Password.Password.Length >= 3)
             {
                 try
@@ -43,8 +45,9 @@
                         MessageBoxResult msgr = MessageBox.Show("Invalid password or campus!", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                     }
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
+                    Console.WriteLine(ex.Message);
                     MessageBoxResult msgr = MessageBox.Show("Invalid password or campus!", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
 

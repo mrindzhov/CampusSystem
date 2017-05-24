@@ -4,14 +4,15 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:data="clr-namespace:CampusSystem.Models;assembly=CampusSystem.Models"
-        xmlns:local="clr-namespace:CampusSystem.Wpf"
         mc:Ignorable="d"
         Title="Campus" Height="525" Width="700"
-        MinHeight="525" MinWidth="700" ResizeMode="NoResize"
+        ResizeMode="NoResize"
         Icon="Images\hotel.ico">
-    <Window.Resources>
+    <!--<Window.Resources>
         <DataTemplate DataType="{x:Type data:Room}">
-            <!--<TextBlock Text="{Binding Number}"/>-->
+            -->
+    <!--<TextBlock Text="{Binding Number}"/>-->
+    <!--
         </DataTemplate>
         <Style x:Key="NoChromeButton" TargetType="{x:Type Button}">
             <Setter Property="Background" Value="Transparent"/>
@@ -33,75 +34,89 @@
                 </Setter.Value>
             </Setter>
         </Style>
-    </Window.Resources>
-    <Grid>
-
-        <Grid.RowDefinitions>
-            <RowDefinition Height="20"/>
-            <RowDefinition Height="50"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="1.1*" />
-            <ColumnDefinition Width="4*"/>
-        </Grid.ColumnDefinitions>
-
-        <Menu Grid.Row="0">
-            <MenuItem Header="Home" Click="ButtonViewHome"/>
-            <MenuItem Header="Utility">
-                <MenuItem Header="View">
-                    <MenuItem Header="Takings" Click="ButtonViewTakings">
-                    </MenuItem>
-                    <MenuItem Header="Unsigned guests" Click="ButtonViewUnsignedGuests">
-                    </MenuItem>
-                </MenuItem>
-                <MenuItem Header="Add">
-                    <MenuItem Header="Student" Click="ButtonAddStudent">
-                    </MenuItem>
-                    <MenuItem Header="Guest" Click="ButtonAddGuest">
-                    </MenuItem>
-                    <MenuItem Header="Room" Click="ButtonAddRoom">
-                    </MenuItem>
-                    <MenuItem Header="Campus" Click="ButtonAddCampus">
-                    </MenuItem>
-                    <MenuItem Header="University" Click="ButtonAddUniversity">
-                    </MenuItem>
-                </MenuItem>
-            </MenuItem>
-            <MenuItem Header="Logout" Click="ButtonLogout"></MenuItem>
-        </Menu>
-
-        <Button Style="{DynamicResource NoChromeButton}" Click="ButtonAddGuest" Grid.Column="0" Grid.Row="1"  
-                HorizontalAlignment="Right" VerticalAlignment="Top"  Width="34" Height="34" Margin="0,14,5,0" >
-            <Image Source="Images\user_group_new.png" Stretch="Fill"/>
-        </Button>
-        <TextBox Height="34" Width="60"  MaxLength="3" TextAlignment="Left"
-                 VerticalAlignment="Top" Grid.Column="0" Grid.Row="1" FontSize="27" 
-                 HorizontalAlignment="Left" Margin="5,14,0,0" PreviewTextInput="NumberValidationTextBox"/>
-
-        <ListView x:Name="RoomsList" ItemsSource="{Binding}" IsSynchronizedWithCurrentItem="True" Grid.Row="3">
-            <ListView.View>
-                <GridView>
-                    <GridViewColumn Header="Rooms" DisplayMemberBinding="{Binding Number}">
-                    </GridViewColumn>
-                </GridView>
-            </ListView.View>
-        </ListView>
-        <Grid Grid.Row="1" Grid.Column="1" Width="Auto">
+    </Window.Resources>-->
+    <StackPanel>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="20"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="3*" />
-                <ColumnDefinition Width="1*" />
-                <ColumnDefinition Width="5" />
-                <ColumnDefinition Width="1*" />
-                <ColumnDefinition Width="3*"/>
+                <ColumnDefinition Width="0.05*" />
+                <ColumnDefinition Width="1.1*" />
+                <ColumnDefinition Width="4*"/>
             </Grid.ColumnDefinitions>
-            <Button DockPanel.Dock="Left" Content="Room"  Grid.Column="1"
+            <Menu Grid.Row="0" Grid.Column="1">
+                <MenuItem Header="Home" Click="ButtonViewHome"/>
+                <MenuItem Header="Utility">
+                    <MenuItem Header="View">
+                        <MenuItem Header="Takings" Click="ButtonViewTakings">
+                        </MenuItem>
+                        <MenuItem Header="Unsigned guests" Click="ButtonViewUnsignedGuests">
+                        </MenuItem>
+                    </MenuItem>
+                    <MenuItem Header="Add">
+                        <MenuItem Header="Student" Click="ButtonAddStudent">
+                        </MenuItem>
+                        <MenuItem Header="Guest" Click="ButtonAddGuest">
+                        </MenuItem>
+                        <MenuItem Header="Room" Click="ButtonAddRoom">
+                        </MenuItem>
+                        <MenuItem Header="Campus" Click="ButtonAddCampus">
+                        </MenuItem>
+                        <MenuItem Header="University" Click="ButtonAddUniversity">
+                        </MenuItem>
+                    </MenuItem>
+                </MenuItem>
+                <MenuItem Header="Logout" Click="ButtonLogout"></MenuItem>
+            </Menu>
+            <DockPanel Grid.Column="1" Grid.Row="1" Height="30">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBox MaxLength="3" FontSize="27" DockPanel.Dock="Left" PreviewTextInput="NumberValidationTextBox"/>
+                    <Grid Grid.Column="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="2*"/>
+                        </Grid.ColumnDefinitions>
+                        <!--Style="{DynamicResource NoChromeButton}" its for the button add guest-->
+                        <Button  Click="ButtonAddGuest"  DockPanel.Dock="Right" Grid.Column="1">
+                            <Image Source="Images\user_group_new.png" Stretch="Fill" Width="40"/>
+                        </Button>
+                    </Grid>
+                </Grid>
+            </DockPanel>
+
+            <ListView x:Name="RoomsList" ItemsSource="{Binding}" IsSynchronizedWithCurrentItem="True" Grid.Row="3" Grid.Column="1" SelectionChanged="RoomsList_SelectionChanged">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="Rooms" DisplayMemberBinding="{Binding Number}">
+                        </GridViewColumn>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+
+            <Grid Grid.Row="1" Grid.Column="2" Width="Auto">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="3*" />
+                    <ColumnDefinition Width="1*" />
+                    <ColumnDefinition Width="5" />
+                    <ColumnDefinition Width="1*" />
+                    <ColumnDefinition Width="3*"/>
+                </Grid.ColumnDefinitions>
+
+                <Button DockPanel.Dock="Left" Content="Room"  Grid.Column="1"
                         FontWeight="Bold" BorderThickness="0" Click="ButtonViewRoom"
                         Height="30" Width="Auto"/>
-            <Button DockPanel.Dock="Right" Content="Students" Grid.Column="3"
+                <Button DockPanel.Dock="Right" Content="Students" Grid.Column="3"
                         FontWeight="Bold"  BorderThickness="0" Click="ButtonViewStudents" 
                         Height="30" Width="Auto"/>
+            </Grid>
+            <ContentControl x:Name="contentControl" Grid.Row="2" Grid.Column="2"/>
         </Grid>
-        <ContentControl x:Name="contentControl" Grid.Row="2" Grid.Column="1"/>
-    </Grid>
+    </StackPanel>
 </Window>

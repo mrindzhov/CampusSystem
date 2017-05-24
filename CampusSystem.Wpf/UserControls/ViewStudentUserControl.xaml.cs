@@ -11,6 +11,10 @@
     /// </summary>
     public partial class ViewStudentUserControl : UserControl
     {
+        //public override void BeginInit()
+        //{
+        //    base.BeginInit();
+        //}
         public ViewStudentUserControl()
         {
             InitializeComponent();
